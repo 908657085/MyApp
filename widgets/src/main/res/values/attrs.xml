@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="TextDrawableTextView">
+        <attr name="drawableTopText" format="string"/>
+        <attr name="drawableTopTextColor" format="color"/>
+        <attr name="drawableTopTextSize" format="dimension"/>
+
+        <attr name="drawableLeftText" format="string"/>
+        <attr name="drawableLeftTextColor" format="color"/>
+        <attr name="drawableLeftTextSize" format="dimension"/>
+
+        <attr name="drawableBottomText" format="string"/>
+        <attr name="drawableBottomTextColor" format="color"/>
+        <attr name="drawableBottomTextSize" format="dimension"/>
+
+        <attr name="drawableRightText" format="string"/>
+        <attr name="drawableRightTextColor" format="color"/>
+        <attr name="drawableRightTextSize" format="dimension"/>
+    </declare-styleable>
+
+</resources>

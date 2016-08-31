@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#666666</color>
+    <color name="colorPrimaryDark">#26272e</color>
+    <color name="colorAccent">#999999</color>
+    <color name="white">#ffffff</color>
+    <color name="whiteLight">#f2f2f2</color>
+    <color name="black">#333333</color>
+    <color name="lightBlack">#666666</color>
+    <color name="gray">#999999</color>
+    <color name="red">#ff011a</color>
+    <color name="redDark">#d90015</color>
+    <color name="green">#95b500</color>
+    <color name="orange">#ff6d01</color>
+
+    <color name="color_topbar">@color/colorPrimaryDark</color>
+    <color name="color_topbar_text">@color/white</color>
+    <color name="color_bg">@color/whiteLight</color>
+    <color name="color_cash">@color/orange</color>
+    <color name="color_recharge">@color/green</color>
+    <color name="color_support">@color/red</color>
+    <color name="color_divider">@color/whiteLight</color>
+    <color name="color_line">#e0e0e0</color>
+</resources>

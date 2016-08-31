@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="tab_pro_detail">
+        <item>话题茶馆</item>
+        <item>产品详情</item>
+        <item>最新动态</item>
+    </array>
+    <array name="tab_dynamic_capital">
+        <item>充值</item>
+        <item>提现</item>
+        <item>支持</item>
+    </array>
+
+    <array name="list_pro_supports">
+        <item>支持1元</item>
+        <item>支持50元</item>
+        <item>支持100元</item>
+        <item>支持200元</item>
+    </array>
+</resources>

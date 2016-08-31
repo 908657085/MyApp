@@ -1,0 +1,36 @@
+apply from: 'buildsystem/ci.gradle'
+apply from: 'buildsystem/dependencies.gradle'
+
+buildscript {
+    repositories {
+        jcenter()
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:2.1.2'
+        classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8'
+        classpath "com.fernandocejas.frodo:frodo-plugin:0.8.1"
+    }
+}
+
+allprojects {
+    repositories {
+        jcenter()
+        mavenLocal()
+        maven {
+            // All of React Native (JS, Obj-C sources, Android binaries) is installed from npm
+            url "$rootDir/../MyReactNative/node_modules/react-native/android"
+        }
+    }
+    ext {
+        androidApplicationId = 'com.gaoxh.myapp'
+        androidVersionCode = 1
+        androidVersionName = "1.0"
+        testInstrumentationRunner = "android.support.test.runner.AndroidJUnitRunner"
+        testApplicationId = 'com.gaoxh.myapp.test'
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}

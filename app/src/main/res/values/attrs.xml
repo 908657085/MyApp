@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="RoundImageView">
+        <attr name="borderThickness" format="dimension"></attr>
+        <attr name="borderOutsideColor" format="color"></attr>
+        <attr name="borderInsideColor" format="color"></attr>
+    </declare-styleable>
+    <declare-styleable name="ResizeDrawableCheckBox">
+        <attr name="drawableLeft_width" format="dimension"/>
+        <attr name="drawableLeft_height" format="dimension"/>
+
+        <attr name="drawableTop_width" format="dimension"/>
+        <attr name="drawableTop_height" format="dimension"/>
+
+        <attr name="drawableRight_width" format="dimension"/>
+        <attr name="drawableRight_height" format="dimension"/>
+
+        <attr name="drawableBottom_width" format="dimension"/>
+        <attr name="drawableBottom_height" format="dimension"/>
+    </declare-styleable>
+
+    <declare-styleable name="BottomText">
+        <attr name="tx_name" format="string"/>
+        <attr name="tx_info" format="string"/>
+    </declare-styleable>
+
+    <declare-styleable name="CustomToolBar">
+        <attr name="title_text" format="string"/>
+        <attr name="leftbutton_show" format="boolean"/>
+        <attr name="leftbutton_bg" format="reference|color"/>
+    </declare-styleable>
+</resources>

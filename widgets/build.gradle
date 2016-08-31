@@ -1,0 +1,59 @@
+apply plugin: 'com.android.library'
+apply plugin: 'com.neenbedankt.android-apt'
+apply plugin: 'com.fernandocejas.frodo'
+
+android {
+    defaultPublishConfig "debug"
+
+    def globalConfiguration = rootProject.extensions.getByName("ext")
+
+    compileSdkVersion globalConfiguration.getAt("androidCompileSdkVersion")
+    buildToolsVersion globalConfiguration.getAt("androidBuildToolsVersion")
+
+    defaultConfig {
+        minSdkVersion globalConfiguration.getAt("androidMinSdkVersion")
+        targetSdkVersion globalConfiguration.getAt("androidTargetSdkVersion")
+        versionCode globalConfiguration.getAt("androidVersionCode")
+    }
+
+    lintOptions {
+        quiet true
+        abortOnError false
+        ignoreWarnings true
+        disable 'InvalidPackage'  // Some libraries have issues with this
+        disable 'OldTargetApi'
+        // Due to Robolectric that modifies the manifest when running tests
+    }
+
+}
+
+dependencies {
+
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+
+    def dataDependencies = rootProject.ext.dataDependencies
+    def testDependencies = rootProject.ext.dataTestDependencies
+
+    compile project(":data")
+
+    apt dataDependencies.daggerCompiler
+    compile dataDependencies.dagger
+    compile dataDependencies.rxJava
+    compile dataDependencies.rxAndroid
+    compile dataDependencies.gson
+    compile dataDependencies.okHttp
+    compile dataDependencies.okHttp_log
+    compile dataDependencies.retrofit
+    compile dataDependencies.retrofit_converter_json
+    compile dataDependencies.retrofit_adapter_rxjava
+    compile dataDependencies.greendao
+    provided dataDependencies.javaxAnnotation
+
+
+
+    testCompile testDependencies.junit
+    androidTestCompile testDependencies.junit
+    androidTestCompile testDependencies.mockito
+    androidTestCompile testDependencies.robolectric
+    androidTestCompile testDependencies.assertj
+}
