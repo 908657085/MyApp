@@ -18,8 +18,10 @@ package com.gaoxh.myapp.di.components;
 import android.app.Activity;
 
 
+import com.gaoxh.myapp.base.BaseActivity;
 import com.gaoxh.myapp.di.PerActivity;
 import com.gaoxh.myapp.di.modules.ActivityModule;
+import com.gaoxh.myapp.utils.ApplicationUtils;
 
 import dagger.Component;
 
@@ -27,6 +29,10 @@ import dagger.Component;
 @PerActivity
 @Component(dependencies = ApplicationComponent.class, modules = ActivityModule.class)
 public interface ActivityComponent {
+
+  void inject(BaseActivity baseActivity);
+
   //Exposed to sub-graphs.
   Activity activity();
+
 }

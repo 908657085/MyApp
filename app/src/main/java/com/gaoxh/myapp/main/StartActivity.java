@@ -20,7 +20,7 @@ public class StartActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        this.context=this;
+        this.context = this;
         navigateToMainReact();
     }
 
@@ -34,13 +34,15 @@ public class StartActivity extends BaseActivity {
 
     }
 
-    private void navigateToMainReact(){
+    private void navigateToMainReact() {
         (new Handler()).postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent intent=new Intent(context,MainReactActivity.class);
+               // Intent intent = new Intent(context, MainReactActivity.class);
+                Intent intent=new Intent(context,MainActivity.class);
                 context.startActivity(intent);
+                StartActivity.this.finish();
             }
-        },2000);
+        }, 2000);
     }
 }

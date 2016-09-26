@@ -15,11 +15,13 @@
  */
 package com.gaoxh.myapp.di.modules;
 
+import android.app.Application;
 import android.content.Context;
 
 
 import com.gaoxh.data.cache.SharedPreferencesHelper;
 import com.gaoxh.myapp.sys.AndroidApplication;
+import com.gaoxh.myapp.utils.ApplicationUtils;
 
 import javax.inject.Singleton;
 
@@ -53,5 +55,10 @@ public class ApplicationModule {
     return new SharedPreferencesHelper(context);
   }
 
+
+  @Provides
+  ApplicationUtils provideApplicationUtils(){
+    return new ApplicationUtils("调用Applicationmodule");
+  }
 
 }

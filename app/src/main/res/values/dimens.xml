@@ -3,36 +3,5 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
 
-
-    <dimen name="textsize_large_xx">17sp</dimen>
-    <dimen name="textsize_large_x">15sp</dimen>
-    <dimen name="textsize_large">14sp</dimen>
-    <dimen name="textsize_normal">13sp</dimen>
-    <dimen name="textsize_small">12sp</dimen>
-
-    <dimen name="topbar_height">42dp</dimen>
-    <dimen name="bottombar_height">47dp</dimen>
-    <dimen name="bottombar_tx_size">@dimen/textsize_small</dimen>
-
-    <dimen name="home_banner_height">153dp</dimen>
-    <dimen name="home_action_icon_width">30dp</dimen>
-    <dimen name="home_action_padding">20dp</dimen>
-    <dimen name="home_action_tx_paddingtop">10dp</dimen>
-    <dimen name="margin_pro">20dp</dimen>
-    <dimen name="marginTop_pro_info_title">10dp</dimen>
-    <dimen name="space_height">4dp</dimen>
-    <dimen name="line_width">0.5dp</dimen>
-    <dimen name="line_height">0.5dp</dimen>
-    <dimen name="icon_size">23dp</dimen>
-    <dimen name="space_text_icon">10dp</dimen>
-    <dimen name="stroke_btn_width">1dp</dimen>
-    <dimen name="corner_btn_large">24dp</dimen>
-    <dimen name="margin_left">20dp</dimen>
-    <dimen name="margin_right">20dp</dimen>
-    <dimen name="margin">20dp</dimen>
-    <dimen name="margin_small">10dp</dimen>
-    <dimen name="minwidth_address_name">80dp</dimen>
-    <dimen name="text_margin">16dp</dimen>
-    <dimen name="width_toolbar_leftbtn">60dp</dimen>
-    <dimen name="height_divider">5dp</dimen>
+    <dimen name="layout_title_height">60dp</dimen>
 </resources>

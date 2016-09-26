@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+
+    <include
+        layout="@layout/layout_title"
+        />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/darker_gray"
+        android:visibility="gone"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:orientation="vertical"
+            >
+
+            <com.gaoxh.widgets.LoadingView
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+               android:layout_margin="20dp"
+                />
+        </LinearLayout>
+
+    </ScrollView>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <com.gaoxh.widgets.CanvasView
+            android:id="@+id/v_canvas"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            />
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/btn_reset"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            app:elevation="3dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="10dp"
+            android:src="@drawable/leaf"
+            />
+
+    </RelativeLayout>
+</LinearLayout>

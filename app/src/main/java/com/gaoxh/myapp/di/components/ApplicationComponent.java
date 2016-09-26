@@ -41,4 +41,6 @@ public interface ApplicationComponent {
   ApiRetrofit apiRetrofit();
 
   SharedPreferencesHelper sharedPreferencesHelper();
+
+  MainActivityComponent mainActivityComponent();
 }

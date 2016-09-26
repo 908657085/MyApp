@@ -13,24 +13,18 @@ import com.facebook.react.ReactApplication;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.shell.MainReactPackage;
-import com.oblador.vectoricons.VectorIconsPackage;
 
 import java.util.Arrays;
 import java.util.List;
 
-import javax.inject.Inject;
-
-import retrofit2.Retrofit;
 
 /**
  * Created by 高雄辉 on 19/05/2016 16:54
  */
-public class AndroidApplication extends Application implements HasComponent<ApplicationComponent>,ReactApplication{
+public class AndroidApplication extends Application implements HasComponent<ApplicationComponent>, ReactApplication {
 
 
     private ApplicationComponent applicationComponent;
-
-
 
 
     @Override
@@ -60,9 +54,8 @@ public class AndroidApplication extends Application implements HasComponent<Appl
         @Override
         protected List<ReactPackage> getPackages() {
             return Arrays.<ReactPackage>asList(
-                    new MainReactPackage(),
-                    new VectorIconsPackage()
-            );
+                    new MainReactPackage()
+                    );
         }
     };
 
