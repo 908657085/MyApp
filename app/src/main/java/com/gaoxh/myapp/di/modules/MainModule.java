@@ -1,6 +1,9 @@
 package com.gaoxh.myapp.di.modules;
 
+import android.app.Activity;
+
 import com.gaoxh.myapp.di.PerActivity;
+import com.gaoxh.myapp.main.MainActivity;
 
 import javax.inject.Named;
 
@@ -14,6 +17,9 @@ import dagger.Provides;
  */
 @Module
 public class MainModule {
+
+    public MainModule(MainActivity activity) {
+    }
 
     @Provides
     @Named("A")

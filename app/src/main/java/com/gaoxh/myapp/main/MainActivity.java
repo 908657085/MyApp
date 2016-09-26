@@ -1,12 +1,16 @@
 package com.gaoxh.myapp.main;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 
 import com.gaoxh.myapp.R;
 import com.gaoxh.myapp.base.BaseActivity;
+import com.gaoxh.myapp.di.ContextType;
 import com.gaoxh.myapp.di.HasComponent;
+import com.gaoxh.myapp.di.components.DaggerMainActivityComponent;
 import com.gaoxh.myapp.di.components.MainActivityComponent;
+import com.gaoxh.myapp.di.modules.MainModule;
 import com.gaoxh.widgets.CanvasView;
 
 import javax.inject.Inject;
@@ -28,7 +32,15 @@ public class MainActivity extends BaseActivity implements HasComponent<MainActiv
     CanvasView vCanvas;
     @BindView(R.id.btn_reset)
     FloatingActionButton btnReset;
+
     private MainActivityComponent component;
+
+    @Inject
+    @ContextType(ContextType.Type.Application)
+    public Context applicationContext;
+    @Inject
+    @ContextType(ContextType.Type.Activity)
+    public Context context;
 
     @Inject
     @Named("A")
@@ -50,7 +62,7 @@ public class MainActivity extends BaseActivity implements HasComponent<MainActiv
 
     @Override
     public void initializeInjector() {
-        component = getApplicationComponent().mainActivityComponent();
+        component = DaggerMainActivityComponent.builder().applicationComponent(getApplicationComponent()).activityModule(getActivityModule()).mainModule(new MainModule(this)).build();
         component.inject(this);
     }
 
@@ -67,9 +79,9 @@ public class MainActivity extends BaseActivity implements HasComponent<MainActiv
         System.out.println("c======" + c);
         System.out.println("c.get()=====" + c.get());
         System.out.println("c.get()=====" + c.get());
-
-        component.applicationUtils().test();
         ButterKnife.bind(this);
+        System.out.println(applicationContext);
+        System.out.println(context);
     }
 
     @OnClick(R.id.btn_reset)
