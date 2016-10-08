@@ -1,6 +1,4 @@
-package com.gaoxh.myapp.utils.share.bean;
-
-import com.gaoxh.myapp.utils.share.ShareChannel;
+package com.gaoxh.lib_share.bean;
 
 /**
  * @author 高雄辉

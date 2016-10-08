@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:id="@+id/item_share_channel"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_gravity="center"
+              android:gravity="center_horizontal|center_vertical"
+              android:orientation="vertical"
+              android:padding="@dimen/item_share_channel_padding"
+    >
+
+    <ImageView
+        android:id="@+id/iv_item_share_channel"
+        android:layout_width="@dimen/ic_share_channel_size"
+        android:layout_height="@dimen/ic_share_channel_size"
+        />
+
+    <TextView
+        android:id="@+id/tv_item_share_channel"
+        style="@style/item_share_channel_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="visible"
+        />
+</LinearLayout>

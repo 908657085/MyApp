@@ -1,11 +1,9 @@
-package com.gaoxh.myapp.utils.share.bean;
+package com.gaoxh.lib_share.bean;
 
 import android.graphics.Bitmap;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.text.TextUtils;
-
-import com.gaoxh.myapp.utils.share.ShareChannel;
 
 import java.io.File;
 

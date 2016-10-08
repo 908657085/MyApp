@@ -23,7 +23,7 @@ android {
         testInstrumentationRunner globalConfiguration.getAt("testInstrumentationRunner")
         testApplicationId globalConfiguration.getAt("testApplicationId")
         ndk {
-            abiFilters "armeabi-v7a", "x86","x86_64"
+            abiFilters "armeabi-v7a", "x86", "x86_64"
         }
     }
 
@@ -67,12 +67,11 @@ dependencies {
     def appDependencies = rootProject.ext.appDependencies
     def testDependencies = rootProject.ext.appTestDependencies
     def developmentDependencies = rootProject.ext.developmentDependencies
-
-    compile project(":data")
+    compile project(':data')
     compile project(':domain')
     compile project(':widgets')
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-
+    compile project(':lib-share');
+    compile fileTree(include: ['*.jar'], dir: 'libs')
     apt appDependencies.daggerCompiler
     apt appDependencies.butterKnifeCompiler
     compile appDependencies.dagger
@@ -93,12 +92,9 @@ dependencies {
     compile appDependencies.design
     compile appDependencies.cardView
     provided appDependencies.javaxAnnotation
-
-    compile "com.facebook.react:react-native:+"
-
+    compile 'com.facebook.react:react-native:+'
     //Development
     compile developmentDependencies.leakCanary
-
     testCompile testDependencies.junit
     androidTestCompile testDependencies.junit
     androidTestCompile testDependencies.mockito

@@ -3,7 +3,10 @@ package com.gaoxh.myapp.main;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
+import android.view.View;
+import android.widget.Toast;
 
+import com.gaoxh.lib_share.ShareUtil;
 import com.gaoxh.myapp.R;
 import com.gaoxh.myapp.base.BaseActivity;
 import com.gaoxh.myapp.di.ContextType;
@@ -11,6 +14,7 @@ import com.gaoxh.myapp.di.HasComponent;
 import com.gaoxh.myapp.di.components.DaggerMainActivityComponent;
 import com.gaoxh.myapp.di.components.MainActivityComponent;
 import com.gaoxh.myapp.di.modules.MainModule;
+import com.gaoxh.myapp.di.modules.ShareModule;
 import com.gaoxh.widgets.CanvasView;
 
 import javax.inject.Inject;
@@ -32,6 +36,8 @@ public class MainActivity extends BaseActivity implements HasComponent<MainActiv
     CanvasView vCanvas;
     @BindView(R.id.btn_reset)
     FloatingActionButton btnReset;
+    @BindView(R.id.btn_share)
+    FloatingActionButton btnShare;
 
     private MainActivityComponent component;
 
@@ -54,6 +60,8 @@ public class MainActivity extends BaseActivity implements HasComponent<MainActiv
     @Named("C")
     public Lazy<String> c;
 
+    @Inject
+    public Lazy<ShareUtil> shareUtil;
 
     @Override
     public void setView() {
@@ -62,7 +70,7 @@ public class MainActivity extends BaseActivity implements HasComponent<MainActiv
 
     @Override
     public void initializeInjector() {
-        component = DaggerMainActivityComponent.builder().applicationComponent(getApplicationComponent()).activityModule(getActivityModule()).mainModule(new MainModule(this)).build();
+        component = DaggerMainActivityComponent.builder().applicationComponent(getApplicationComponent()).activityModule(getActivityModule()).mainModule(new MainModule(this)).shareModule(new ShareModule()).build();
         component.inject(this);
     }
 
@@ -84,8 +92,36 @@ public class MainActivity extends BaseActivity implements HasComponent<MainActiv
         System.out.println(context);
     }
 
-    @OnClick(R.id.btn_reset)
-    public void onClick() {
-        vCanvas.reset();
+    @Override
+    protected void onStart() {
+        super.onStart();
     }
+
+    @OnClick({R.id.btn_reset, R.id.btn_share})
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.btn_reset:
+                vCanvas.reset();
+                break;
+            case R.id.btn_share:
+                shareUtil.get().share(context, null, null, new ShareUtil.OnShareCallBackListener() {
+                    @Override
+                    public void success() {
+                        Toast.makeText(context,"分享成功!",Toast.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    public void fail() {
+                        Toast.makeText(context,"分享失败!",Toast.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    public void cancel() {
+                        Toast.makeText(context,"分享取消!",Toast.LENGTH_SHORT).show();
+                    }
+                });
+                break;
+        }
+    }
+
 }

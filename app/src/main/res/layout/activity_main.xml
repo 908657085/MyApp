@@ -39,16 +39,30 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             />
-        <android.support.design.widget.FloatingActionButton
-            android:id="@+id/btn_reset"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            app:elevation="3dp"
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="10dp"
-            android:src="@drawable/leaf"
-            />
-
+            android:gravity="center"
+            android:orientation="horizontal"
+            >
+            <android.support.design.widget.FloatingActionButton
+                android:id="@+id/btn_reset"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/leaf"
+                app:backgroundTint="@color/white"
+                />
+            <android.support.design.widget.FloatingActionButton
+                android:id="@+id/btn_share"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="10dp"
+                android:src="@drawable/ic_share"
+                app:backgroundTint="@color/white"
+                />
+        </LinearLayout>
     </RelativeLayout>
 </LinearLayout>

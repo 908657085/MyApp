@@ -1,10 +1,8 @@
-package com.gaoxh.myapp.utils.share.bean;
+package com.gaoxh.lib_share.bean;
 
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.text.TextUtils;
-
-import com.gaoxh.myapp.utils.share.ShareChannel;
 
 /**
  * 图文链接bean
