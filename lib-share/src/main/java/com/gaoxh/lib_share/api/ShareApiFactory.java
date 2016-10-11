@@ -1,5 +1,7 @@
 package com.gaoxh.lib_share.api;
 
+import com.gaoxh.lib_share.api.qq.QQShareApi;
+import com.gaoxh.lib_share.api.qq.QQZoneShareApi;
 import com.gaoxh.lib_share.bean.ShareChannel;
 
 /**
@@ -9,7 +11,7 @@ import com.gaoxh.lib_share.bean.ShareChannel;
  */
 public class ShareApiFactory {
 
-    public static ShareApi getShareApi(ShareChannel shareChannel){
+    public static ShareApi createInstance(ShareChannel shareChannel){
         switch (shareChannel){
             case WECHAT:
                 return new WeChatShareApi();

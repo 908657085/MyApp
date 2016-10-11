@@ -28,6 +28,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".main.MainActivity"/>
+        <activity android:name=".main.DragActivity"/>
         <!--react-native-->
         <activity android:name=".main.MainReactActivity"/>
         <activity android:name="com.facebook.react.devsupport.DevSettingsActivity"/>

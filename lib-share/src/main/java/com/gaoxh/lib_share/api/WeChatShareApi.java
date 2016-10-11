@@ -1,5 +1,7 @@
 package com.gaoxh.lib_share.api;
 
+import android.content.Context;
+
 import com.gaoxh.lib_share.bean.IShareItem;
 
 /**
@@ -11,10 +13,11 @@ public class WeChatShareApi implements ShareApi {
     /**
      * 分享API
      *
+     *@param context
      * @param shareItem
      */
     @Override
-    public void share(IShareItem shareItem) {
+    public void share(Context context,IShareItem shareItem) {
 
     }
 }

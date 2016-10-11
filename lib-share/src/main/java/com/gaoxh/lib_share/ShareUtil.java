@@ -43,13 +43,13 @@ public class ShareUtil {
     public void share(Context context, IShareItem shareItem, ShareParams shareParams, OnShareCallBackListener onShareCallBackListener) {
         //检测上一次分享是否已经完成,防止重复调用
         if (this.shareCallBackListener != null) {
-            Toast.makeText(context, ShareConstants.MSG_LASTSHARE_UNFINISH, Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, ShareConstants.MSG_SHARE_NOT_FINISH, Toast.LENGTH_SHORT).show();
             return;
         } else {
             this.shareCallBackListener = onShareCallBackListener;
         }
         //弹出分享平台选择框
-        ShareDialog shareDialog = new ShareDialog(context, shareItem, null);
+        ShareDialog shareDialog = new ShareDialog(context, shareItem, shareParams.shareChannelList);
         shareDialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
             @Override
             public void onCancel(DialogInterface dialogInterface) {

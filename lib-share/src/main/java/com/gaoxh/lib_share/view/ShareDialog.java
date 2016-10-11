@@ -82,8 +82,8 @@ public class ShareDialog extends Dialog {
                 if(ShareDialog.this.isShowing()){
                     ShareDialog.this.dismiss();
                 }
-                ShareApi shareApi = ShareApiFactory.getShareApi(shareChannel);
-                shareApi.share(shareItem);
+                ShareApi shareApi = ShareApiFactory.createInstance(shareChannel);
+                shareApi.share(mContext,shareItem);
             }
         });
         rvShare.setAdapter(shareAdapter);

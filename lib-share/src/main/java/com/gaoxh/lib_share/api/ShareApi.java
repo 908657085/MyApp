@@ -1,5 +1,7 @@
 package com.gaoxh.lib_share.api;
 
+import android.content.Context;
+
 import com.gaoxh.lib_share.bean.IShareItem;
 
 /**
@@ -11,5 +13,5 @@ public interface ShareApi {
     /**
      * 分享API
      */
-    void share(IShareItem shareItem);
+    void share(Context context, IShareItem shareItem);
 }
