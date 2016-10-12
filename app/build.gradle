@@ -78,6 +78,7 @@ dependencies {
     compile appDependencies.recyclerView
     compile appDependencies.design
     compile appDependencies.cardView
+    compile appDependencies.palette_v7
     provided appDependencies.javaxAnnotation
     compile 'com.facebook.react:react-native:+'
     //Development

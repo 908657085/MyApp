@@ -49,7 +49,7 @@ public class StartActivity extends BaseActivity {
             @Override
             public void run() {
                // Intent intent = new Intent(context, MainReactActivity.class);
-                Intent intent=new Intent(context,DragActivity.class);
+                Intent intent=new Intent(context,DesignActivity.class);
                 context.startActivity(intent);
             }
         }, 2000);

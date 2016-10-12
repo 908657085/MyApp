@@ -31,23 +31,24 @@ dependencies {
 
     compile fileTree(dir: 'libs', include: ['*.jar'])
 
-    def dataDependencies = rootProject.ext.dataDependencies
+    def appDependencies = rootProject.ext.appDependencies
     def testDependencies = rootProject.ext.dataTestDependencies
 
     compile project(":data")
 
-    apt dataDependencies.daggerCompiler
-    compile dataDependencies.dagger
-    compile dataDependencies.rxJava
-    compile dataDependencies.rxAndroid
-    compile dataDependencies.gson
-    compile dataDependencies.okHttp
-    compile dataDependencies.okHttp_log
-    compile dataDependencies.retrofit
-    compile dataDependencies.retrofit_converter_json
-    compile dataDependencies.retrofit_adapter_rxjava
-    compile dataDependencies.greendao
-    provided dataDependencies.javaxAnnotation
+    apt appDependencies.daggerCompiler
+    compile appDependencies.dagger
+    compile appDependencies.rxJava
+    compile appDependencies.rxAndroid
+    compile appDependencies.gson
+    compile appDependencies.okHttp
+    compile appDependencies.okHttp_log
+    compile appDependencies.retrofit
+    compile appDependencies.retrofit_converter_json
+    compile appDependencies.retrofit_adapter_rxjava
+    compile appDependencies.greendao
+    compile appDependencies.recyclerView
+    provided appDependencies.javaxAnnotation
 
 
 
