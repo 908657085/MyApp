@@ -1,8 +1,13 @@
 package com.gaoxh.myapp.main;
 
+import android.content.ComponentName;
 import android.content.Context;
+import android.content.Intent;
+import android.content.ServiceConnection;
 import android.os.Bundle;
+import android.os.IBinder;
 import android.support.design.widget.FloatingActionButton;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -17,9 +22,9 @@ import com.gaoxh.myapp.di.components.DaggerMainActivityComponent;
 import com.gaoxh.myapp.di.components.MainActivityComponent;
 import com.gaoxh.myapp.di.modules.MainModule;
 import com.gaoxh.myapp.di.modules.ShareModule;
+import com.gaoxh.myapp.main.service.TestService;
 import com.gaoxh.widgets.CanvasView;
 
-import java.util.concurrent.TimeUnit;
 
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -40,6 +45,8 @@ import rx.schedulers.Schedulers;
  * @date 16/9/19 下午3:31
  */
 public class MainActivity extends BaseActivity implements HasComponent<MainActivityComponent> {
+
+    private  static  final String TAG=MainActivity.class.getName();
 
     @BindView(R.id.v_canvas)
     CanvasView vCanvas;
@@ -72,7 +79,22 @@ public class MainActivity extends BaseActivity implements HasComponent<MainActiv
     @Inject
     public Lazy<ShareUtil> shareUtil;
 
-    public Subscription testSubscription;
+
+    private TestService.TestBinder testBinder;
+
+    private ServiceConnection testConnection=new ServiceConnection() {
+        @Override
+        public void onServiceConnected(ComponentName componentName, IBinder iBinder) {
+            testBinder= (TestService.TestBinder) iBinder;
+            Log.d(TAG,"bindItem="+testBinder.getCurrentItem());
+        }
+
+        @Override
+        public void onServiceDisconnected(ComponentName componentName) {
+            testBinder=null;
+        }
+    };
+
 
     @Override
     public void setView() {
@@ -81,7 +103,12 @@ public class MainActivity extends BaseActivity implements HasComponent<MainActiv
 
     @Override
     public void initializeInjector() {
-        component = DaggerMainActivityComponent.builder().applicationComponent(getApplicationComponent()).activityModule(getActivityModule()).mainModule(new MainModule(this)).shareModule(new ShareModule()).build();
+        component = DaggerMainActivityComponent.builder()
+                .applicationComponent(getApplicationComponent())
+                .activityModule(getActivityModule())
+                .mainModule(new MainModule(this))
+                .shareModule(new ShareModule())
+                .build();
         component.inject(this);
     }
 
@@ -93,34 +120,8 @@ public class MainActivity extends BaseActivity implements HasComponent<MainActiv
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        System.out.println("a======" + a);
-//        System.out.println("b======" + b);
-//        System.out.println("c======" + c);
-//        System.out.println("c.get()=====" + c.get());
-//        System.out.println("c.get()=====" + c.get());
         ButterKnife.bind(this);
-//        System.out.println(applicationContext);
-//        System.out.println(context);
-//        testSubscription= Observable.just("test").delay(2000, TimeUnit.MILLISECONDS).observeOn(Schedulers.io())
-//                .subscribeOn(AndroidSchedulers.mainThread())
-//                .subscribe(new Action1<String>() {
-//                    @Override
-//                    public void call(String s) {
-//                        System.out.println("延时执行");
-//                        System.out.println(s);
-//                        System.out.println(a);
-//                       // shareUtil.get().share(context,null,null,null);
-//                    }
-//                });
-//        Observable.just("test").delay(1,TimeUnit.SECONDS).observeOn(Schedulers.io())
-//                .subscribeOn(AndroidSchedulers.mainThread())
-//                .subscribe(new Action1<String>() {
-//                    @Override
-//                    public void call(String s) {
-//                        System.out.println("开始结束");
-//                        MainActivity.this.finish();
-//                    }
-//                });
+        bindService(new Intent(context,TestService.class),testConnection,BIND_AUTO_CREATE);
     }
 
     @Override
@@ -157,6 +158,7 @@ public class MainActivity extends BaseActivity implements HasComponent<MainActiv
 
     @Override
     protected void onDestroy() {
+        unbindService(testConnection);
         super.onDestroy();
     }
 }

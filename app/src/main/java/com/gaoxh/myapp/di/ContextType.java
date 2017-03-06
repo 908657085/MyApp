@@ -17,7 +17,7 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 @Retention(RUNTIME)
 public @interface ContextType {
     enum Type {
-        Application, Activity;
+        Application, Activity
     }
 
     Type value() default Type.Activity;
