@@ -101,26 +101,26 @@ public class MainActivity extends BaseActivity implements HasComponent<MainActiv
         ButterKnife.bind(this);
 //        System.out.println(applicationContext);
 //        System.out.println(context);
-        testSubscription= Observable.just("test").delay(2000, TimeUnit.MILLISECONDS).observeOn(Schedulers.io())
-                .subscribeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Action1<String>() {
-                    @Override
-                    public void call(String s) {
-                        System.out.println("延时执行");
-                        System.out.println(s);
-                        System.out.println(a);
-                       // shareUtil.get().share(context,null,null,null);
-                    }
-                });
-        Observable.just("test").delay(1,TimeUnit.SECONDS).observeOn(Schedulers.io())
-                .subscribeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Action1<String>() {
-                    @Override
-                    public void call(String s) {
-                        System.out.println("开始结束");
-                        MainActivity.this.finish();
-                    }
-                });
+//        testSubscription= Observable.just("test").delay(2000, TimeUnit.MILLISECONDS).observeOn(Schedulers.io())
+//                .subscribeOn(AndroidSchedulers.mainThread())
+//                .subscribe(new Action1<String>() {
+//                    @Override
+//                    public void call(String s) {
+//                        System.out.println("延时执行");
+//                        System.out.println(s);
+//                        System.out.println(a);
+//                       // shareUtil.get().share(context,null,null,null);
+//                    }
+//                });
+//        Observable.just("test").delay(1,TimeUnit.SECONDS).observeOn(Schedulers.io())
+//                .subscribeOn(AndroidSchedulers.mainThread())
+//                .subscribe(new Action1<String>() {
+//                    @Override
+//                    public void call(String s) {
+//                        System.out.println("开始结束");
+//                        MainActivity.this.finish();
+//                    }
+//                });
     }
 
     @Override
@@ -158,7 +158,5 @@ public class MainActivity extends BaseActivity implements HasComponent<MainActiv
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        testSubscription.unsubscribe();
-        System.out.println("结束完成");
     }
 }

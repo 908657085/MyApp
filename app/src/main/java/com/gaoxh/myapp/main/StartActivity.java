@@ -24,7 +24,6 @@ public class StartActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.context = this;
-        navigateToMainReact();
         Button button= (Button) findViewById(R.id.btn_main);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -48,8 +47,7 @@ public class StartActivity extends BaseActivity {
         (new Handler()).postDelayed(new Runnable() {
             @Override
             public void run() {
-               // Intent intent = new Intent(context, MainReactActivity.class);
-                Intent intent=new Intent(context,DesignActivity.class);
+                Intent intent = new Intent(context, MainReactActivity.class);
                 context.startActivity(intent);
             }
         }, 2000);
