@@ -63,6 +63,7 @@ dependencies {
     compile project(':domain')
     compile project(':widgets')
     compile project(':lib-share');
+    compile project(':lib-speech');
     compile fileTree(include: ['*.jar'], dir: 'libs')
     apt appDependencies.daggerCompiler
     apt appDependencies.butterKnifeCompiler

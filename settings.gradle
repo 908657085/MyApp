@@ -1,3 +1,3 @@
 rootProject.name = 'MyApp'
 
-include ':app', ':domain', ':data', ':widgets', ':lib-share'
+include ':app', ':domain', ':data', ':widgets', ':lib-share', ':lib-speech'

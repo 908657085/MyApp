@@ -63,6 +63,14 @@
                 android:src="@drawable/ic_share"
                 app:backgroundTint="@color/white"
                 />
+            <android.support.design.widget.FloatingActionButton
+                android:id="@+id/btn_speech"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="10dp"
+                android:src="@drawable/ic_more"
+                app:backgroundTint="@color/white"
+                />
         </LinearLayout>
     </RelativeLayout>
 </LinearLayout>
