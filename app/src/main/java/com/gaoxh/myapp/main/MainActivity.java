@@ -14,7 +14,7 @@ import android.widget.Toast;
 import com.gaoxh.lib_share.ShareUtil;
 import com.gaoxh.lib_share.bean.ShareItem;
 import com.gaoxh.lib_share.bean.ShareParams;
-import com.gaoxh.lib_speech.SpeechUtils;
+import com.gaoxh.lib_speech.SpeechRecognitionUtils;
 import com.gaoxh.myapp.R;
 import com.gaoxh.myapp.base.BaseActivity;
 import com.gaoxh.myapp.demo.SpeechCalculatorActivity;
@@ -26,10 +26,6 @@ import com.gaoxh.myapp.di.modules.MainModule;
 import com.gaoxh.myapp.di.modules.ShareModule;
 import com.gaoxh.myapp.main.service.TestService;
 import com.gaoxh.widgets.CanvasView;
-import com.iflytek.cloud.InitListener;
-import com.iflytek.cloud.RecognizerListener;
-import com.iflytek.cloud.RecognizerResult;
-import com.iflytek.cloud.SpeechError;
 import com.iflytek.cloud.SpeechUtility;
 
 
@@ -40,11 +36,6 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import dagger.Lazy;
-import rx.Observable;
-import rx.Subscription;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.functions.Action1;
-import rx.schedulers.Schedulers;
 
 /**
  * @author 高雄辉
@@ -129,7 +120,7 @@ public class MainActivity extends BaseActivity implements HasComponent<MainActiv
         super.onCreate(savedInstanceState);
         ButterKnife.bind(this);
         bindService(new Intent(context, TestService.class), testConnection, BIND_AUTO_CREATE);
-        SpeechUtility speechUtility = SpeechUtils.initSpeech(applicationContext);
+        SpeechUtility speechUtility = SpeechRecognitionUtils.initSpeechSdk(applicationContext);
         System.out.println("speechUtility:" + speechUtility);
     }
 

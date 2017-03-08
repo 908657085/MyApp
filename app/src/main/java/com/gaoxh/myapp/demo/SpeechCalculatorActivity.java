@@ -14,6 +14,7 @@ import com.gaoxh.myapp.di.HasComponent;
 import com.gaoxh.myapp.di.components.DaggerSpeechCalculatorActivityComponent;
 import com.gaoxh.myapp.di.components.SpeechCalculatorActivityComponent;
 
+
 import javax.inject.Inject;
 
 import butterknife.BindView;
@@ -38,6 +39,8 @@ public class SpeechCalculatorActivity extends BaseActivity implements SpeechCalc
     public RecyclerView rvSpeechCalculator;
     @BindView(R.id.tv_speech_calculator_result)
     public TextView tvSpeechCalculatorResult;
+    @BindView(R.id.tv_speech_calculator_volume)
+    public TextView tvSpeechCalculatorVolume;
 
     @Inject
     public SpeechCalculatorAdapter speechCalculatorAdapter;
@@ -67,6 +70,7 @@ public class SpeechCalculatorActivity extends BaseActivity implements SpeechCalc
         super.onCreate(savedInstanceState);
         ButterKnife.bind(this);
         speechCalculatorPresenter.setView(this);
+        speechCalculatorPresenter.initSpeech();
         rvSpeechCalculator.setLayoutManager(new LinearLayoutManager(context));
         rvSpeechCalculator.setAdapter(speechCalculatorAdapter);
     }
@@ -74,8 +78,7 @@ public class SpeechCalculatorActivity extends BaseActivity implements SpeechCalc
     @Override
     protected void onStart() {
         super.onStart();
-        speechCalculatorPresenter.parseResult("1+2");
-        speechCalculatorPresenter.parseResult("100*300");
+        speechCalculatorPresenter.startSpeech();
     }
 
     @Override
@@ -98,8 +101,19 @@ public class SpeechCalculatorActivity extends BaseActivity implements SpeechCalc
     }
 
     @Override
+    @OnClick(R.id.btn_speech_calculator_cancel)
+    public void cancelInstruction() {
+
+    }
+
+    @Override
     public void setCalculateResult(String calculateResult) {
         tvSpeechCalculatorResult.setText(calculateResult);
+    }
+
+    @Override
+    public void setVolume(int i) {
+        tvSpeechCalculatorVolume.setText(Integer.toString(i));
     }
 
 

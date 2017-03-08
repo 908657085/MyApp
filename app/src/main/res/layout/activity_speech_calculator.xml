@@ -13,17 +13,6 @@
         android:divider="#e2e2e2"
         android:dividerHeight="10dp"
         />
-    <Button
-        android:id="@+id/btn_speech_calculator_reset"
-        android:layout_width="100dp"
-        android:layout_height="60dp"
-        android:background="#e2e2e2"
-        android:layout_alignParentBottom="true"
-       android:layout_alignParentLeft="true"
-        android:layout_margin="5dp"
-        android:textSize="24sp"
-        android:text="清空"
-        />
     <TextView
         android:id="@+id/tv_speech_calculator_result"
         android:layout_width="match_parent"
@@ -31,10 +20,48 @@
         android:background="#e2e2e2"
         android:textColor="#000000"
         android:textSize="24sp"
-        android:layout_alignParentBottom="true"
-        android:layout_toRightOf="@+id/btn_speech_calculator_reset"
+        android:layout_above="@+id/btn_speech_calculator_reset"
         android:gravity="right|center_vertical"
         android:padding="20dp"
         android:layout_margin="5dp"
         />
+    <Button
+        android:id="@+id/btn_speech_calculator_cancel"
+        android:layout_width="100dp"
+        android:layout_height="60dp"
+        android:background="#e2e2e2"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_margin="5dp"
+        android:textSize="24sp"
+        android:text="撤销"
+        />
+
+    <TextView
+        android:id="@+id/tv_speech_calculator_volume"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="#e2e2e2"
+        android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@+id/btn_speech_calculator_cancel"
+        android:layout_toLeftOf="@+id/btn_speech_calculator_reset"
+        android:layout_margin="5dp"
+        android:textSize="24sp"
+        android:text="1"
+        android:gravity="center"
+        android:textColor="@color/black"
+        />
+
+    <Button
+        android:id="@+id/btn_speech_calculator_reset"
+        android:layout_width="100dp"
+        android:layout_height="60dp"
+        android:background="#e2e2e2"
+        android:layout_alignParentBottom="true"
+       android:layout_alignParentRight="true"
+        android:layout_margin="5dp"
+        android:textSize="24sp"
+        android:text="清空"
+        />
+
 </RelativeLayout>

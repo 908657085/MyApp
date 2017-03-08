@@ -3,6 +3,7 @@ package com.gaoxh.myapp.base;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.Toast;
 
 import com.gaoxh.myapp.di.components.ApplicationComponent;
 import com.gaoxh.myapp.di.modules.ActivityModule;
@@ -48,5 +49,9 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseView
   @Override
   public void hideLoading() {
 
+  }
+
+  public void showMsg(String msg){
+    Toast.makeText(BaseActivity.this,msg,Toast.LENGTH_SHORT).show();
   }
 }

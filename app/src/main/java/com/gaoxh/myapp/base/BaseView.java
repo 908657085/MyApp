@@ -16,4 +16,9 @@ public interface BaseView {
      */
     public void hideLoading();
 
+    /**
+     * 显示提示信息
+     */
+    public void showMsg(String msg);
+
 }

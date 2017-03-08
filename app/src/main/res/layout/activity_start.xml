@@ -6,6 +6,7 @@
     android:background="@color/white"
     android:gravity="top|center_horizontal"
     android:orientation="vertical"
+    android:fitsSystemWindows="true"
     >
 
     <Button
