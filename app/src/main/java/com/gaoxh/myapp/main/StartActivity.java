@@ -12,6 +12,7 @@ import android.widget.Button;
 
 import com.gaoxh.myapp.R;
 import com.gaoxh.myapp.base.BaseActivity;
+import com.gaoxh.myapp.demo.ViewTestActivity;
 import com.gaoxh.myapp.di.ContextType;
 import com.gaoxh.myapp.di.HasComponent;
 import com.gaoxh.myapp.di.components.StartActivityComponent;
@@ -44,10 +45,7 @@ public class StartActivity extends BaseActivity implements HasComponent<StartAct
     @Inject
     public Activity activity;
 
-    @BindView(R.id.btn_main)
-    Button btnMain;
-    @BindView(R.id.btn_react)
-    Button btnReact;
+
 
     private TestService.TestBinder testBinder;
 
@@ -109,6 +107,12 @@ public class StartActivity extends BaseActivity implements HasComponent<StartAct
                 Intent intent = new Intent(context, MainReactActivity.class);
         context.startActivity(intent);
     }
+    @OnClick(R.id.btn_volume)
+    public void navigateToViewTest() {
+        Intent intent = new Intent(context, ViewTestActivity.class);
+        context.startActivity(intent);
+    }
+
 
 
 }

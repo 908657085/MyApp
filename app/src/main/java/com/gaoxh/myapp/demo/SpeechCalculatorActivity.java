@@ -13,6 +13,7 @@ import com.gaoxh.myapp.di.ContextType;
 import com.gaoxh.myapp.di.HasComponent;
 import com.gaoxh.myapp.di.components.DaggerSpeechCalculatorActivityComponent;
 import com.gaoxh.myapp.di.components.SpeechCalculatorActivityComponent;
+import com.gaoxh.widgets.VolumeView;
 
 
 import javax.inject.Inject;
@@ -39,8 +40,8 @@ public class SpeechCalculatorActivity extends BaseActivity implements SpeechCalc
     public RecyclerView rvSpeechCalculator;
     @BindView(R.id.tv_speech_calculator_result)
     public TextView tvSpeechCalculatorResult;
-    @BindView(R.id.tv_speech_calculator_volume)
-    public TextView tvSpeechCalculatorVolume;
+    @BindView(R.id.v_speech_calculator_volume)
+    public VolumeView vSpeechCalculatorVolume;
 
     @Inject
     public SpeechCalculatorAdapter speechCalculatorAdapter;
@@ -113,7 +114,7 @@ public class SpeechCalculatorActivity extends BaseActivity implements SpeechCalc
 
     @Override
     public void setVolume(int i) {
-        tvSpeechCalculatorVolume.setText(Integer.toString(i));
+        vSpeechCalculatorVolume.setVolume(i);
     }
 
 

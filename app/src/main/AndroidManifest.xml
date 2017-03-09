@@ -33,10 +33,13 @@
         <activity android:name=".main.DragActivity"/>
         <activity android:name=".main.DesignActivity"/>
         <activity android:name=".demo.SpeechCalculatorActivity"/>
+        <activity android:name=".demo.ViewTestActivity"/>
 
         <!--react-native-->
         <activity android:name=".main.MainReactActivity"/>
         <activity android:name="com.facebook.react.devsupport.DevSettingsActivity"/>
+
+
         <service android:name=".main.service.TestService"/>
     </application>
 

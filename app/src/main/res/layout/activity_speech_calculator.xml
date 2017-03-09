@@ -36,22 +36,15 @@
         android:textSize="24sp"
         android:text="撤销"
         />
-
-    <TextView
-        android:id="@+id/tv_speech_calculator_volume"
+    <com.gaoxh.widgets.VolumeView
+        android:id="@+id/v_speech_calculator_volume"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:background="#e2e2e2"
-        android:layout_alignParentBottom="true"
         android:layout_toRightOf="@+id/btn_speech_calculator_cancel"
         android:layout_toLeftOf="@+id/btn_speech_calculator_reset"
+        android:layout_alignParentBottom="true"
         android:layout_margin="5dp"
-        android:textSize="24sp"
-        android:text="1"
-        android:gravity="center"
-        android:textColor="@color/black"
         />
-
     <Button
         android:id="@+id/btn_speech_calculator_reset"
         android:layout_width="100dp"
