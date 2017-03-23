@@ -3,45 +3,13 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
     android:gravity="top|center_horizontal"
     android:orientation="vertical"
-    android:fitsSystemWindows="true"
     >
-
-    <Button
-        android:id="@+id/btn_main"
+    <ImageView
+        android:id="@+id/img_splash"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_margin="20dp"
-        android:background="@android:color/holo_blue_light"
-        android:text="主页面"
-        android:textColor="@color/white"
-        android:textSize="24sp"
-        android:gravity="center"
-        />
-
-    <Button
-        android:id="@+id/btn_react"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_margin="20dp"
-        android:background="@android:color/holo_blue_light"
-        android:text="react-native"
-        android:textColor="@color/white"
-        android:textSize="24sp"
-        android:gravity="center"
-        />
-
-    <Button
-        android:id="@+id/btn_volume"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_margin="20dp"
-        android:background="@android:color/holo_blue_light"
-        android:text="volumeView"
-        android:textColor="@color/white"
-        android:textSize="24sp"
-        android:gravity="center"
+        android:layout_height="match_parent"
+        android:background="@mipmap/img_welcome"
         />
 </LinearLayout>

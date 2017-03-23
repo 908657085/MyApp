@@ -29,19 +29,21 @@ public class ViewTestActivity extends Activity {
     @Override
     protected void onStart() {
         super.onStart();
-       new Thread(){
-           @Override
-           public void run() {
-               for(int i=0;i<10;i++){
-                   vVolume.setVolume(new Random().nextInt(35));
-                   try {
-                       Thread.currentThread().sleep(500);
-                   } catch (InterruptedException e) {
-                       e.printStackTrace();
-                   }
-               }
-               vVolume.setVolumeState(VolumeView.DEFAULT_VOLUME_STATE_ERROR);
-           }
-       }.start();
+        vVolume.setVolumeState(VolumeView.DEFAULT_VOLUME_STATE_ERROR);
+
+//       new Thread(){
+//           @Override
+//           public void run() {
+//               for(int i=0;i<10;i++){
+//                   vVolume.setVolume(new Random().nextInt(35));
+//                   try {
+//                       Thread.currentThread().sleep(500);
+//                   } catch (InterruptedException e) {
+//                       e.printStackTrace();
+//                   }
+//               }
+//               vVolume.setVolumeState(VolumeView.DEFAULT_VOLUME_STATE_ERROR);
+//           }
+//       }.start();
     }
 }

@@ -6,7 +6,7 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="actionBarSize">40dp</item>
-        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <item name="android:windowDrawsSystemBarBackgrounds">false</item>
         <item name="android:statusBarColor">@color/colorPrimaryDark</item>
         <item name="android:windowBackground">@color/whiteLight</item>
     </style>

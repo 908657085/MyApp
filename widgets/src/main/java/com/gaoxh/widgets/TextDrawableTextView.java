@@ -72,25 +72,25 @@ public class TextDrawableTextView extends TextView {
             } else if (attr == R.styleable.TextDrawableTextView_drawableTopTextColor) {
                 textColor_drawableTop = a.getColor(attr, Color.BLACK);
             } else if (attr == R.styleable.TextDrawableTextView_drawableTopTextSize) {
-                textSize_drawableTop = a.getDimensionPixelSize(attr, R.dimen.textsize_default);
+                textSize_drawableTop = a.getDimensionPixelSize(attr, R.dimen.textSize_default);
             } else if (attr == R.styleable.TextDrawableTextView_drawableBottomText) {
                 text_drawableBottom = a.getString(attr);
             } else if (attr == R.styleable.TextDrawableTextView_drawableBottomTextColor) {
                 textColor_drawableBottom = a.getColor(attr, Color.BLACK);
             } else if (attr == R.styleable.TextDrawableTextView_drawableBottomTextSize) {
-                textSize_drawableBottom = a.getDimensionPixelSize(attr, R.dimen.textsize_default);
+                textSize_drawableBottom = a.getDimensionPixelSize(attr, R.dimen.textSize_default);
             } else if (attr == R.styleable.TextDrawableTextView_drawableLeftText) {
                 text_drawableLeft = a.getString(attr);
             } else if (attr == R.styleable.TextDrawableTextView_drawableLeftTextColor) {
                 textColor_drawableLeft = a.getColor(attr, Color.BLACK);
             } else if (attr == R.styleable.TextDrawableTextView_drawableLeftTextSize) {
-                textSize_drawableLeft = a.getDimensionPixelSize(attr, R.dimen.textsize_default);
+                textSize_drawableLeft = a.getDimensionPixelSize(attr, R.dimen.textSize_default);
             } else if (attr == R.styleable.TextDrawableTextView_drawableRightText) {
                 text_drawableRight = a.getString(attr);
             } else if (attr == R.styleable.TextDrawableTextView_drawableRightTextColor) {
                 textColor_drawableRight = a.getColor(attr, Color.BLACK);
             } else if (attr == R.styleable.TextDrawableTextView_drawableRightTextSize) {
-                textSize_drawableRight = a.getDimensionPixelSize(attr, R.dimen.textsize_default);
+                textSize_drawableRight = a.getDimensionPixelSize(attr, R.dimen.textSize_default);
             }
         }
         a.recycle();

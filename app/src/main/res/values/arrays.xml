@@ -17,4 +17,14 @@
         <item>支持100元</item>
         <item>支持200元</item>
     </array>
+
+    <array name="array_tab_bottom_icon">
+        <item></item>
+    </array>
+    <array name="array_tab_bottom_text">
+        <item>首页</item>
+        <item>动态</item>
+        <item>统计</item>
+        <item>设置</item>
+    </array>
 </resources>

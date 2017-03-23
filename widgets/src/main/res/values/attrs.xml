@@ -1,21 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <declare-styleable name="TextDrawableTextView">
-        <attr name="drawableTopText" format="string"/>
-        <attr name="drawableTopTextColor" format="color"/>
-        <attr name="drawableTopTextSize" format="dimension"/>
+        <attr name="drawableTopText" format="string" />
+        <attr name="drawableTopTextColor" format="color" />
+        <attr name="drawableTopTextSize" format="dimension" />
 
-        <attr name="drawableLeftText" format="string"/>
-        <attr name="drawableLeftTextColor" format="color"/>
-        <attr name="drawableLeftTextSize" format="dimension"/>
+        <attr name="drawableLeftText" format="string" />
+        <attr name="drawableLeftTextColor" format="color" />
+        <attr name="drawableLeftTextSize" format="dimension" />
 
-        <attr name="drawableBottomText" format="string"/>
-        <attr name="drawableBottomTextColor" format="color"/>
-        <attr name="drawableBottomTextSize" format="dimension"/>
+        <attr name="drawableBottomText" format="string" />
+        <attr name="drawableBottomTextColor" format="color" />
+        <attr name="drawableBottomTextSize" format="dimension" />
 
-        <attr name="drawableRightText" format="string"/>
-        <attr name="drawableRightTextColor" format="color"/>
-        <attr name="drawableRightTextSize" format="dimension"/>
+        <attr name="drawableRightText" format="string" />
+        <attr name="drawableRightTextColor" format="color" />
+        <attr name="drawableRightTextSize" format="dimension" />
     </declare-styleable>
 
+    <declare-styleable name="BottomTabView">
+        <attr name="tabIcons" format="reference" />
+        <attr name="tabTexts" format="reference" />
+    </declare-styleable>
+
+    <declare-styleable name="BottomTab">
+        <attr name="tabIconNormal" format="reference" />
+        <attr name="tabIconChecked" format="reference" />
+        <attr name="tabTextColorNormal" format="color" />
+        <attr name="tabTextColorChecked" format="color" />
+        <attr name="tabText" format="string" />
+        <attr name="tabShowTips" format="boolean" />
+        <attr name="tabDefaultChecked" format="boolean" />
+    </declare-styleable>
 </resources>

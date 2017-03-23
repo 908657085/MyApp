@@ -1,76 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:orientation="vertical"
-              xmlns:app="http://schemas.android.com/apk/res-auto"
-    >
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
     <include
-        layout="@layout/layout_title"
-        />
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@android:color/darker_gray"
-        android:visibility="gone"
-        >
+        android:id="@+id/layout_title"
+        layout="@layout/layout_title" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:orientation="vertical"
-            >
+    <com.gaoxh.widgets.BottomTabView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true">
 
-            <com.gaoxh.widgets.LoadingView
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-               android:layout_margin="20dp"
-                />
-        </LinearLayout>
-
-    </ScrollView>
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <com.gaoxh.widgets.CanvasView
-            android:id="@+id/v_canvas"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            />
-        <LinearLayout
+        <com.gaoxh.widgets.BottomTab
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="10dp"
-            android:gravity="center"
-            android:orientation="horizontal"
-            >
-            <android.support.design.widget.FloatingActionButton
-                android:id="@+id/btn_reset"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:src="@drawable/leaf"
-                app:backgroundTint="@color/white"
-                />
-            <android.support.design.widget.FloatingActionButton
-                android:id="@+id/btn_share"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_marginLeft="10dp"
-                android:src="@drawable/ic_share"
-                app:backgroundTint="@color/white"
-                />
-            <android.support.design.widget.FloatingActionButton
-                android:id="@+id/btn_speech"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_marginLeft="10dp"
-                android:src="@drawable/ic_more"
-                app:backgroundTint="@color/white"
-                />
-        </LinearLayout>
-    </RelativeLayout>
-</LinearLayout>
+            app:tabIconNormal="@drawable/tab_news"
+            app:tabIconChecked="@drawable/tab_news_checked"
+            app:tabText="新闻"
+            app:tabTextColorNormal="@color/gray"
+            app:tabTextColorChecked="@color/orange"
+            app:tabDefaultChecked="true"
+            />
+
+        <com.gaoxh.widgets.BottomTab
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:tabIconNormal="@drawable/tab_discovery"
+            app:tabIconChecked="@drawable/tab_discovery_checked"
+            app:tabText="社交"
+            app:tabTextColorNormal="@color/gray"
+            app:tabTextColorChecked="@color/orange"
+            />
+
+        <com.gaoxh.widgets.BottomTab
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:tabIconNormal="@drawable/tab_friend"
+            app:tabIconChecked="@drawable/tab_friend_checked"
+            app:tabText="好友"
+            app:tabTextColorNormal="@color/gray"
+            app:tabTextColorChecked="@color/orange"
+            />
+
+        <com.gaoxh.widgets.BottomTab
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:tabIconNormal="@drawable/tab_me"
+            app:tabIconChecked="@drawable/tab_me_checked"
+            app:tabText="我"
+            app:tabTextColorNormal="@color/gray"
+            app:tabTextColorChecked="@color/orange"
+            />
+    </com.gaoxh.widgets.BottomTabView>
+
+</RelativeLayout>

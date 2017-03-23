@@ -176,6 +176,7 @@ public class VolumeView extends View {
 
     private void drawVolumeError(Canvas canvas) {
         errorPaint.setColor(Color.GRAY);
+        errorPaint.setStyle(Paint.Style.FILL);
         volumeRadiusCurrent = (float) (viewHeight - (1.5 * paintWidth));
         canvas.drawArc(new RectF(centerPoint.x - volumeRadiusCurrent,
                         centerPoint.y - volumeRadiusCurrent,
@@ -186,6 +187,7 @@ public class VolumeView extends View {
                 true,
                 errorPaint
         );
+
     }
 
 
@@ -206,5 +208,9 @@ public class VolumeView extends View {
     public void setVolumeState(int volumeState) {
         this.volumeState = volumeState;
         postInvalidate();
+    }
+
+    public void setVolumeMax(int volumeMax) {
+        this.volumeMax = volumeMax;
     }
 }
