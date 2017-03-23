@@ -20,6 +20,8 @@ import android.widget.TextView;
 public class BottomTab extends RelativeLayout {
 
 
+    private Context mContext;
+
     private Drawable mTabIconNormal;
     private Drawable mTabIconChecked;
     private int mTabTextColorNormal;
@@ -53,6 +55,13 @@ public class BottomTab extends RelativeLayout {
     }
 
     private void init(Context context, @Nullable AttributeSet attrs) {
+        initAttrs(context,attrs);
+        initView();
+
+    }
+
+    private void initAttrs(Context context, @Nullable AttributeSet attrs){
+        mContext=context;
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.BottomTab);
         mTabIconNormal = typedArray.getDrawable(R.styleable.BottomTab_tabIconNormal);
         mTabIconChecked = typedArray.getDrawable(R.styleable.BottomTab_tabIconChecked);
@@ -64,17 +73,19 @@ public class BottomTab extends RelativeLayout {
         typedArray.recycle();
         mChecked = mTabDefaultChecked;
 
-        float density=getResources().getDisplayMetrics().density;
-        mTabIconSize = (int) (20*density);
-        mTabTextSize =10;
-        mTabTextMarginTop = (int) (5*density);
+        float density = getResources().getDisplayMetrics().density;
+        mTabIconSize = (int) (20 * density);
+        mTabTextSize = 10;
+        mTabTextMarginTop = (int) (5 * density);
+    }
 
-        iv_tabIcon = new ImageView(context);
-        tv_tabName = new TextView(context);
+    private void initView(){
+        iv_tabIcon = new ImageView(mContext);
+        tv_tabName = new TextView(mContext);
         checkStateChanged();
         tv_tabName.setTextSize(mTabTextSize);
         tv_tabName.setText(mTabText);
-        LinearLayout contentLayout = new LinearLayout(context);
+        LinearLayout contentLayout = new LinearLayout(mContext);
         contentLayout.setGravity(Gravity.CENTER);
         contentLayout.setOrientation(LinearLayout.VERTICAL);
         LinearLayout.LayoutParams l_tabIcon = new LinearLayout.LayoutParams(mTabIconSize, mTabIconSize);
@@ -91,7 +102,6 @@ public class BottomTab extends RelativeLayout {
     }
 
 
-
     private void checkStateChanged() {
         if (mChecked) {
             iv_tabIcon.setBackground(mTabIconChecked);
@@ -103,23 +113,23 @@ public class BottomTab extends RelativeLayout {
     }
 
 
-    public void setCheckState(boolean checked){
-        if(mChecked!=checked){
-            mChecked=checked;
+    public void setCheckState(boolean checked) {
+        if (mChecked != checked) {
+            mChecked = checked;
             checkStateChanged();
         }
     }
 
 
-    public boolean getCheckState(){
+    public boolean getCheckState() {
         return mChecked;
     }
 
-    public void setIndex(int index){
-            mIndex=index;
+    public void setIndex(int index) {
+        mIndex = index;
     }
 
-    public int getIndex(){
+    public int getIndex() {
         return mIndex;
     }
 

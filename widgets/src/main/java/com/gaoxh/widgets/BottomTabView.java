@@ -54,11 +54,10 @@ public class BottomTabView extends ViewGroup {
     }
 
 
-
     private void initAttrs(Context context, AttributeSet attrs) {
-        DisplayMetrics displayMetrics=context.getResources().getDisplayMetrics();
+        DisplayMetrics displayMetrics = context.getResources().getDisplayMetrics();
         DEFAULT_WIDTH = displayMetrics.widthPixels;
-        DEFAULT_HEIGHT = (int) (50*displayMetrics.density);
+        DEFAULT_HEIGHT = (int) (50 * displayMetrics.density);
         this.addOnAttachStateChangeListener(new OnAttachStateChangeListener() {
             @Override
             public void onViewAttachedToWindow(View v) {
@@ -97,12 +96,12 @@ public class BottomTabView extends ViewGroup {
         setMeasuredDimension(mViewWidth, mViewHeight);
 
         mChildCount = getChildCount();
-        mChildWidth=mViewWidth/mChildCount;
-        mChildHeight=Math.abs(mViewHeight);
-        for(int i = 0;i < mChildCount;i++){
+        mChildWidth = mViewWidth / mChildCount;
+        mChildHeight = Math.abs(mViewHeight);
+        for (int i = 0; i < mChildCount; i++) {
             View child = getChildAt(i);
-            int childWidthMeasureSpec=MeasureSpec.makeMeasureSpec(mChildWidth,MeasureSpec.EXACTLY);
-            int childHeightMeasureSpec=MeasureSpec.makeMeasureSpec(mChildHeight,MeasureSpec.EXACTLY);
+            int childWidthMeasureSpec = MeasureSpec.makeMeasureSpec(mChildWidth, MeasureSpec.EXACTLY);
+            int childHeightMeasureSpec = MeasureSpec.makeMeasureSpec(mChildHeight, MeasureSpec.EXACTLY);
             child.measure(childWidthMeasureSpec, childHeightMeasureSpec);
         }
 
@@ -111,33 +110,30 @@ public class BottomTabView extends ViewGroup {
 
     @Override
     protected void onLayout(boolean changed, int l, int t, int r, int b) {
-        if(mChildCount>0){
-            int childTop=0;
-            int childLeft=0;
-            for(int i=0;i<mChildCount;i++){
-                View view=getChildAt(i);
-                view.layout(childLeft,childTop,childLeft+mChildWidth,mChildHeight);
-                childLeft+=mChildWidth;
+        if (mChildCount > 0) {
+            int childTop = 0;
+            int childLeft = 0;
+            for (int i = 0; i < mChildCount; i++) {
+                View view = getChildAt(i);
+                view.layout(childLeft, childTop, childLeft + mChildWidth, mChildHeight);
+                childLeft += mChildWidth;
             }
         }
 
     }
 
 
-
-
-
-    private void initListener(){
-        for(int i=0;i<mChildCount;i++){
-            BottomTab bottomTab= (BottomTab) getChildAt(i);
+    private void initListener() {
+        for (int i = 0; i < mChildCount; i++) {
+            BottomTab bottomTab = (BottomTab) getChildAt(i);
             bottomTab.setIndex(i);
             bottomTab.setOnClickListener(new OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    int index=((BottomTab)v).getIndex();
-                    Log.d(TAG,"clickItem"+index);
+                    int index = ((BottomTab) v).getIndex();
+                    Log.d(TAG, "clickItem" + index);
                     BottomTabView.this.setCheckedItem(index);
-                    if(mOnCheckedChangeListener!=null){
+                    if (mOnCheckedChangeListener != null) {
                         mOnCheckedChangeListener.checkedChange(index);
                     }
                 }
@@ -145,20 +141,23 @@ public class BottomTabView extends ViewGroup {
         }
     }
 
-    public void setCheckedItem( int index){
-        for(int i=0;i<mChildCount;i++){
-            BottomTab bottomTab= (BottomTab) getChildAt(i);
-            if(i==index){
+    public void setCheckedItem(int index) {
+        for (int i = 0; i < mChildCount; i++) {
+            BottomTab bottomTab = (BottomTab) getChildAt(i);
+            if (i == index) {
                 bottomTab.setCheckState(true);
-            }else{
+            } else {
                 bottomTab.setCheckState(false);
             }
         }
     }
 
 
-    public interface onCheckedChangeListener{
+    public interface onCheckedChangeListener {
         void checkedChange(int index);
     }
 
+    public void setOnCheckedChangeListener(onCheckedChangeListener OnCheckedChangeListener) {
+        this.mOnCheckedChangeListener = OnCheckedChangeListener;
+    }
 }
