@@ -32,4 +32,12 @@
         <attr name="tabShowTips" format="boolean" />
         <attr name="tabDefaultChecked" format="boolean" />
     </declare-styleable>
+
+    <declare-styleable name="MySeekBar">
+        <attr name="maxProgress" format="integer"/>
+        <attr name="minValue" format="float"/>
+        <attr name="maxValue" format="float"/>
+        <attr name="label" format="string"/>
+    </declare-styleable>
+
 </resources>

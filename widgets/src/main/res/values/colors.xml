@@ -7,4 +7,17 @@
     <color name="BLUE">#0000FF</color>
     <color name="INDIGO">#4B0082</color>
     <color name="PURPLE">#8B00FF</color>
+
+    <!-- UI Style Color-->
+    <color name="system_blue_light">#05BCD4</color>
+    <color name="system_blue">#4285F4</color>
+    <color name="system_blue_dark">#3F51B5</color>
+    <color name="system_purple">#673AB8</color>
+    <color name="system_pink_dark">#E91F63</color>
+    <color name="system_orange_red">#FF5721</color>
+    <color name="system_orange">#FFC006</color>
+    <color name="system_orange_yellow">#FFF5A230</color>
+    <color name="system_yellow">#FFEB3C</color>
+    <color name="system_green_yellow">#CDDC3A</color>
+    <color name="system_yellow_green">#8BC34B</color>
 </resources>
