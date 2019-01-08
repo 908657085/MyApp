@@ -1,30 +1,21 @@
 package com.gaoxh.myapp.main;
 
 import android.app.Activity;
-import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
-import android.content.ServiceConnection;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.IBinder;
-import android.util.Log;
-import android.widget.Button;
 
 import com.gaoxh.myapp.R;
 import com.gaoxh.myapp.base.BaseActivity;
-import com.gaoxh.myapp.demo.ViewTestActivity;
 import com.gaoxh.myapp.di.ContextType;
 import com.gaoxh.myapp.di.HasComponent;
-import com.gaoxh.myapp.di.components.StartActivityComponent;
 import com.gaoxh.myapp.di.components.DaggerStartActivityComponent;
-import com.gaoxh.myapp.main.service.TestService;
+import com.gaoxh.myapp.di.components.StartActivityComponent;
 
 import javax.inject.Inject;
 
-import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 
 
 /**
@@ -32,20 +23,15 @@ import butterknife.OnClick;
  */
 public class StartActivity extends BaseActivity implements HasComponent<StartActivityComponent> {
     private static final String TAG = StartActivity.class.getName();
-
-    private StartActivityComponent startActivityComponent;
-
     @Inject
     @ContextType(ContextType.Type.Activity)
     public Context context;
-
     @Inject
     @ContextType(ContextType.Type.Application)
     public Context applicationContext;
-
     @Inject
     public Activity activity;
-
+    private StartActivityComponent startActivityComponent;
 
     @Override
     public void setView() {
@@ -95,11 +81,5 @@ public class StartActivity extends BaseActivity implements HasComponent<StartAct
         Intent intent = new Intent(context, MainReactActivity.class);
         context.startActivity(intent);
     }
-
-    public void navigateToViewTest() {
-        Intent intent = new Intent(context, ViewTestActivity.class);
-        context.startActivity(intent);
-    }
-
 
 }

@@ -21,15 +21,19 @@ android {
         disable 'OldTargetApi'    // Due to Robolectric that modifies the manifest when running tests
     }
 
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
     buildToolsVersion '25.0.0'
-
-
 }
 
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
-    testCompile 'junit:junit:4.12'
-    compile 'com.android.support:appcompat-v7:24.1.1'
-    compile 'com.android.support:recyclerview-v7:24.1.1'
-    compile files('libs/open_sdk_r5756_lite.jar')
+    def appDependencies = rootProject.ext.appDependencies
+    api files('libs/open_sdk_r5756_lite.jar')
+    implementation appDependencies.appcompat_v7
+    implementation appDependencies.recyclerView
 }

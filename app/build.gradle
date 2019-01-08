@@ -1,17 +1,10 @@
 apply plugin: 'com.android.application'
-apply plugin: 'com.neenbedankt.android-apt'
 apply plugin: 'com.fernandocejas.frodo'
-
-import com.android.build.OutputFile
-
 
 android {
     def globalConfiguration = rootProject.extensions.getByName("ext")
 
     compileSdkVersion globalConfiguration.getAt("androidCompileSdkVersion")
-    buildToolsVersion globalConfiguration.getAt("androidBuildToolsVersion")
-
-
 
     defaultConfig {
         minSdkVersion globalConfiguration.getAt("androidMinSdkVersion")
@@ -20,10 +13,9 @@ android {
         applicationId globalConfiguration.getAt("androidApplicationId")
         versionCode globalConfiguration.getAt("androidVersionCode")
         versionName globalConfiguration.getAt("androidVersionName")
-        testInstrumentationRunner globalConfiguration.getAt("testInstrumentationRunner")
         testApplicationId globalConfiguration.getAt("testApplicationId")
         ndk {
-            abiFilters "armeabi-v7a", "x86","x86_64"
+            abiFilters "armeabi-v7a", "x86", "x86_64"
         }
     }
 
@@ -42,16 +34,26 @@ android {
         debug {
             signingConfig signingConfigs.debug
         }
-    }
 
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
 
     configurations.all {
         resolutionStrategy.force 'com.google.code.findbugs:jsr305:3.0.0'
     }
-    buildToolsVersion '25.0.0'
 
     lintOptions {
         abortOnError false
+    }
+
+    sourceSets {
+        main {
+            jniLibs.srcDir 'libs'
+            jni.srcDirs = [] //disable automatic ndk-build call
+        }
     }
 }
 
@@ -59,44 +61,35 @@ dependencies {
     def appDependencies = rootProject.ext.appDependencies
     def testDependencies = rootProject.ext.appTestDependencies
     def developmentDependencies = rootProject.ext.developmentDependencies
-    compile project(':data')
-    compile project(':domain')
-    compile project(':widgets')
-    compile project(':lib-share');
-    compile project(':lib-speech');
-    compile fileTree(include: ['*.jar'], dir: 'libs')
-    apt appDependencies.daggerCompiler
-    apt appDependencies.butterKnifeCompiler
-    compile appDependencies.dagger
-    compile appDependencies.butterKnife
-    compile appDependencies.rxJava
-    compile appDependencies.rxAndroid
-    compile appDependencies.gson
-    compile appDependencies.okHttp
-    compile appDependencies.okHttp_log
-    compile appDependencies.retrofit
-    compile appDependencies.retrofit_converter_json
-    compile appDependencies.retrofit_adapter_rxjava
-    compile appDependencies.glide
-    compile appDependencies.greendao
-    compile appDependencies.support_v4
-    compile appDependencies.appcompat_v7
-    compile appDependencies.recyclerView
-    compile appDependencies.design
-    compile appDependencies.cardView
-    compile appDependencies.palette_v7
-    provided appDependencies.javaxAnnotation
-    compile 'com.facebook.react:react-native:+'
+    implementation project(':data')
+    implementation project(':domain')
+    implementation project(':widgets')
+    implementation project(':lib-share')
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    annotationProcessor appDependencies.daggerCompiler
+    annotationProcessor appDependencies.butterKnifeCompiler
+    implementation appDependencies.dagger
+    implementation appDependencies.butterKnife
+    implementation appDependencies.rxJava
+    implementation appDependencies.rxAndroid
+    implementation appDependencies.gson
+    implementation appDependencies.okHttp
+    implementation appDependencies.okHttp_log
+    implementation appDependencies.retrofit
+    implementation appDependencies.retrofit_converter_json
+    implementation appDependencies.retrofit_adapter_rxjava
+    implementation appDependencies.glide
+    implementation appDependencies.greendao
+    implementation appDependencies.support_v4
+    implementation appDependencies.appcompat_v7
+    implementation appDependencies.recyclerView
+    implementation appDependencies.design
+    implementation appDependencies.cardView
+    implementation appDependencies.palette_v7
+    compileOnly appDependencies.javaxAnnotation
+    implementation 'com.facebook.react:react-native:+'
     //Development
-    compile developmentDependencies.leakCanary
-    testCompile testDependencies.junit
-    androidTestCompile testDependencies.junit
-    androidTestCompile testDependencies.mockito
-    androidTestCompile testDependencies.dexmaker
-    androidTestCompile testDependencies.dexmakerMockito
-    androidTestCompile testDependencies.espresso
-    androidTestCompile testDependencies.testingSupportLib
-    androidTestCompile testDependencies.assertj
+    implementation developmentDependencies.leakCanary
 }
 
 // Run this once to be able to run the application with BUCK

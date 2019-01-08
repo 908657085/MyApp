@@ -1,10 +1,7 @@
 apply plugin: 'com.android.library'
-apply plugin: 'com.neenbedankt.android-apt'
 apply plugin: 'com.fernandocejas.frodo'
 
 android {
-    defaultPublishConfig "debug"
-
     def globalConfiguration = rootProject.extensions.getByName("ext")
 
     compileSdkVersion globalConfiguration.getAt("androidCompileSdkVersion")
@@ -23,37 +20,33 @@ android {
         disable 'InvalidPackage'  // Some libraries have issues with this
         disable 'OldTargetApi'    // Due to Robolectric that modifies the manifest when running tests
     }
-
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
     buildToolsVersion '25.0.0'
 }
 
 dependencies {
 
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     def dataDependencies = rootProject.ext.dataDependencies
     def testDependencies = rootProject.ext.dataTestDependencies
 
-    apt dataDependencies.daggerCompiler
+    annotationProcessor dataDependencies.daggerCompiler
 
-    compile dataDependencies.dagger
-    compile dataDependencies.rxJava
-    compile dataDependencies.rxAndroid
-    compile dataDependencies.gson
-    compile dataDependencies.okHttp
-    compile dataDependencies.okHttp_log
-    compile dataDependencies.retrofit
-    compile dataDependencies.retrofit_converter_json
-    compile dataDependencies.retrofit_adapter_rxjava
-    compile dataDependencies.greendao
-    provided dataDependencies.javaxAnnotation
-
-
-
-    testCompile testDependencies.junit
-    androidTestCompile testDependencies.junit
-    androidTestCompile testDependencies.mockito
-    androidTestCompile testDependencies.robolectric
-    androidTestCompile testDependencies.assertj
-    androidTestCompile testDependencies.retrofit_mock
+    implementation dataDependencies.dagger
+    implementation dataDependencies.rxJava
+    implementation dataDependencies.rxAndroid
+    implementation dataDependencies.gson
+    implementation dataDependencies.okHttp
+    implementation dataDependencies.okHttp_log
+    implementation dataDependencies.retrofit
+    implementation dataDependencies.retrofit_converter_json
+    implementation dataDependencies.retrofit_adapter_rxjava
+    implementation dataDependencies.greendao
+    compileOnly dataDependencies.javaxAnnotation
 }

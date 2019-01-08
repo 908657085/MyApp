@@ -1,6 +1,7 @@
 package com.gaoxh.myapp.main;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 
@@ -14,11 +15,11 @@ import com.gaoxh.myapp.di.modules.MainModule;
 import com.gaoxh.myapp.di.modules.ShareModule;
 import com.gaoxh.widgets.BottomTabView;
 
-
 import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
  * @author 高雄辉
@@ -28,19 +29,15 @@ import butterknife.ButterKnife;
 public class MainActivity extends BaseActivity implements HasComponent<MainActivityComponent> {
 
     private static final String TAG = MainActivity.class.getName();
-
-    private MainActivityComponent component;
-
     @Inject
     @ContextType(ContextType.Type.Application)
     public Context applicationContext;
     @Inject
     @ContextType(ContextType.Type.Activity)
     public Context context;
-
     @BindView(R.id.v_main_bottomTab)
     public BottomTabView bottomTabView;
-
+    private MainActivityComponent component;
 
     @Override
     public void setView() {
@@ -70,7 +67,7 @@ public class MainActivity extends BaseActivity implements HasComponent<MainActiv
         bottomTabView.setOnCheckedChangeListener(new BottomTabView.onCheckedChangeListener() {
             @Override
             public void checkedChange(int index) {
-                Toast.makeText(context,"点击了+"+index,Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, "点击了+" + index, Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -83,5 +80,17 @@ public class MainActivity extends BaseActivity implements HasComponent<MainActiv
     @Override
     protected void onDestroy() {
         super.onDestroy();
+    }
+
+    @OnClick(R.id.btn_react_native)
+    public void navigateToMainReact() {
+        Intent intent = new Intent(context, MainReactActivity.class);
+        context.startActivity(intent);
+    }
+
+    @OnClick(R.id.btn_map)
+    public void navigateToMap() {
+        Intent intent = new Intent(context, MapActivity.class);
+        context.startActivity(intent);
     }
 }

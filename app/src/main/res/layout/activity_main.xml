@@ -2,29 +2,29 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    >
 
     <include
         android:id="@+id/l_title"
         layout="@layout/layout_title" />
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/l_title"
-        android:layout_above="@+id/v_main_bottomTab"
-        android:padding="16dp"
-        android:orientation="vertical"
-        >
-        <com.gaoxh.widgets.MySeekBar
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:label="大小"
-            app:maxValue="200"
-            app:minValue="-100"
-            app:maxProgress="300"
-            />
 
-    </LinearLayout>
+    <Button
+        android:id="@+id/btn_react_native"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/l_title"
+        android:layout_margin="16dp"
+        android:text="ReactNative"
+        />
+<Button
+        android:id="@+id/btn_map"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btn_react_native"
+        android:layout_margin="16dp"
+        android:text="地图"
+        />
 
 
 

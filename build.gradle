@@ -3,20 +3,24 @@ apply from: 'buildsystem/dependencies.gradle'
 
 buildscript {
     repositories {
+        maven{url 'http://maven.aliyun.com/nexus/content/groups/public/'}
+        maven { url "https://jitpack.io" }
         jcenter()
         mavenCentral()
+        google()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.3.0'
-        classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8'
+        classpath 'com.android.tools.build:gradle:3.1.4'
         classpath "com.fernandocejas.frodo:frodo-plugin:0.8.1"
     }
 }
 
 allprojects {
     repositories {
+        maven{url 'http://maven.aliyun.com/nexus/content/groups/public/'}
         jcenter()
         mavenLocal()
+        google()
         maven {
             // All of React Native (JS, Obj-C sources, Android binaries) is installed from npm
             url "$rootDir/../MyReactNative/node_modules/react-native/android"
@@ -26,7 +30,6 @@ allprojects {
         androidApplicationId = 'com.gaoxh.myapp'
         androidVersionCode = 1
         androidVersionName = "1.0"
-        testInstrumentationRunner = "android.support.test.runner.AndroidJUnitRunner"
         testApplicationId = 'com.gaoxh.myapp.test'
     }
 }
