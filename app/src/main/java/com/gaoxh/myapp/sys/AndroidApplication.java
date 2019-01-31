@@ -11,7 +11,9 @@ import com.facebook.react.shell.MainReactPackage;
 import com.gaoxh.myapp.BuildConfig;
 import com.gaoxh.myapp.di.HasComponent;
 import com.gaoxh.myapp.di.components.ApplicationComponent;
+import com.gaoxh.myapp.di.components.DaggerApiComponent;
 import com.gaoxh.myapp.di.components.DaggerApplicationComponent;
+import com.gaoxh.myapp.di.modules.ApiModule;
 import com.gaoxh.myapp.di.modules.ApplicationModule;
 import com.squareup.leakcanary.LeakCanary;
 
@@ -49,7 +51,9 @@ public class AndroidApplication extends Application implements HasComponent<Appl
     }
 
     private void initializeInjector() {
-        this.applicationComponent = DaggerApplicationComponent.builder().applicationModule(new ApplicationModule(this)).build();
+        this.applicationComponent = DaggerApplicationComponent.builder()
+                .apiComponent(DaggerApiComponent.builder().apiModule(new ApiModule(this)).build())
+                .applicationModule(new ApplicationModule(this)).build();
     }
 
     private void initializeLeakDetection() {
@@ -58,7 +62,7 @@ public class AndroidApplication extends Application implements HasComponent<Appl
         }
     }
 
-    private void initializeBaiduSdk(){
+    private void initializeBaiduSdk() {
         //在使用SDK各组件之前初始化context信息，传入ApplicationContext
         SDKInitializer.initialize(this);
         //自4.3.0起，百度地图SDK所有接口均支持百度坐标和国测局坐标，用此方法设置您使用的坐标类型.

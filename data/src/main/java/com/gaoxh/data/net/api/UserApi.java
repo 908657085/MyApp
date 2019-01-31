@@ -1,6 +1,5 @@
 package com.gaoxh.data.net.api;
 
-import com.gaoxh.data.entity.user.TokenModel;
 import com.gaoxh.data.net.ApiResult;
 
 import retrofit2.http.GET;
@@ -15,6 +14,7 @@ import rx.Observable;
 public interface UserApi {
     /**
      * 用户登录
+     *
      * @param userName
      * @param pwd
      * @return
@@ -24,6 +24,7 @@ public interface UserApi {
 
     /**
      * 用户注册
+     *
      * @param userName
      * @param pwd
      * @param code
@@ -35,6 +36,7 @@ public interface UserApi {
 
     /**
      * 获取注册手机验证码
+     *
      * @param mobilePhone
      * @return
      */
@@ -43,6 +45,7 @@ public interface UserApi {
 
     /**
      * 获取用户信息
+     *
      * @return
      */
     @GET("api/user/info/info")
@@ -50,6 +53,7 @@ public interface UserApi {
 
     /**
      * 获取用户状态信息
+     *
      * @return
      */
     @GET("api/user/status/info")

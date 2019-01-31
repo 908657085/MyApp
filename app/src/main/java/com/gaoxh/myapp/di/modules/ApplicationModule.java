@@ -19,6 +19,8 @@ import android.content.Context;
 
 
 import com.gaoxh.data.cache.SharedPreferencesHelper;
+import com.gaoxh.data.net.ApiRetrofit;
+import com.gaoxh.data.net.ApiTokenIntercepter;
 import com.gaoxh.myapp.di.Application;
 import com.gaoxh.myapp.di.ContextType;
 import com.gaoxh.myapp.sys.AndroidApplication;

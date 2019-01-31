@@ -13,7 +13,7 @@ public class Constants_DataBase {
     /**
      * 数据库名称
      */
-    public static final String DATABASE_NAME="crowfunding-db";
+    public static final String DATABASE_NAME="gaoxh.db";
 
 
 }

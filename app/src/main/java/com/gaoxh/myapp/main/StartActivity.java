@@ -12,6 +12,7 @@ import com.gaoxh.myapp.di.ContextType;
 import com.gaoxh.myapp.di.HasComponent;
 import com.gaoxh.myapp.di.components.DaggerStartActivityComponent;
 import com.gaoxh.myapp.di.components.StartActivityComponent;
+import com.gaoxh.myapp.main.service.LocationService;
 
 import javax.inject.Inject;
 
@@ -64,6 +65,7 @@ public class StartActivity extends BaseActivity implements HasComponent<StartAct
                 StartActivity.this.finish();
             }
         }, 3000);
+        startBackService();
     }
 
     @Override
@@ -71,15 +73,19 @@ public class StartActivity extends BaseActivity implements HasComponent<StartAct
         super.onDestroy();
     }
 
+    public void startBackService(){
+        Intent intent = new Intent(context,LocationService.class);
+        startService(intent);
+    }
 
     public void navigateToMain() {
         Intent intent = new Intent(context, MainActivity.class);
-        context.startActivity(intent);
+        startActivity(intent);
     }
 
     public void navigateToMainReact() {
         Intent intent = new Intent(context, MainReactActivity.class);
-        context.startActivity(intent);
+        startActivity(intent);
     }
 
 }

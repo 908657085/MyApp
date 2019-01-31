@@ -15,10 +15,9 @@ import javax.inject.Singleton;
 @Singleton
 public class SharedPreferencesHelper  {
     private SharedPreferences sharedPreferences;
-
-
+    @Inject
     public SharedPreferencesHelper(Context context) {
-        this.sharedPreferences=context.getSharedPreferences(Constants_SharedPreferences.SHAREDPREFERENCES_NAME,Context.MODE_PRIVATE);
+        this.sharedPreferences=context.getSharedPreferences(Constants_SharedPreferences.SHARED_PREFERENCES_NAME,Context.MODE_PRIVATE);
     }
 
     public SharedPreferences getSharedPreferences() {

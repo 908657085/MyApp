@@ -23,7 +23,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/btn_react_native"
         android:layout_margin="16dp"
-        android:text="地图"
+    android:textSize="30sp"
+        android:text="小熊在哪里"
         />
 
 

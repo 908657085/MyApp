@@ -8,7 +8,6 @@ import android.widget.Toast;
 import com.gaoxh.myapp.di.components.ApplicationComponent;
 import com.gaoxh.myapp.di.modules.ActivityModule;
 import com.gaoxh.myapp.sys.AndroidApplication;
-import com.gaoxh.myapp.base.BaseView;
 
 
 /**
