@@ -4,13 +4,14 @@ import android.app.Service;
 import android.content.Intent;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
+import android.util.Log;
 
 import com.baidu.location.BDAbstractLocationListener;
 import com.baidu.location.BDLocation;
 import com.baidu.location.LocationClient;
 import com.baidu.location.LocationClientOption;
-import com.baidu.mapapi.map.MyLocationData;
 import com.gaoxh.data.entity.map.Location;
+import com.gaoxh.data.net.ApiResult;
 import com.gaoxh.domain.service.user.MapService;
 import com.gaoxh.myapp.base.utils.LogUtil;
 import com.gaoxh.myapp.di.components.DaggerLocationServiceComponent;
@@ -18,6 +19,8 @@ import com.gaoxh.myapp.di.components.LocationServiceComponent;
 import com.gaoxh.myapp.sys.AndroidApplication;
 
 import javax.inject.Inject;
+
+import rx.Observer;
 
 /**
  * @author 高雄辉
@@ -74,7 +77,7 @@ public class LocationService extends Service {
         //BD09：百度墨卡托坐标；
         //海外地区定位，无需设置坐标类型，统一返回WGS84类型坐标
 
-        option.setScanSpan(5000);
+        option.setScanSpan(30*1000);
         //可选，设置发起定位请求的间隔，int类型，单位ms
         //如果设置为0，则代表单次定位，即仅定位一次，默认为0
         //如果设置非0，需设置1000ms以上才有效
@@ -135,7 +138,7 @@ public class LocationService extends Service {
 
     public class MyLocationListener extends BDAbstractLocationListener {
         @Override
-        public void onReceiveLocation(BDLocation location) {
+        public void onReceiveLocation(final BDLocation location) {
             String locationDescribe = location.getLocationDescribe();
             String addr = location.getAddrStr();    //获取详细地址信息
             String country = location.getCountry();    //获取国家
@@ -168,8 +171,29 @@ public class LocationService extends Service {
 
             int errorCode = location.getLocType();
             //获取定位类型、定位错误返回码，具体信息可参照类参考中BDLocation类中的说明
-            Location currentLocation = new Location(latitude,longitude,radius,locationDescribe,addr,country,province,city,district,street);
+            final Location currentLocation = new Location(latitude,longitude,radius,locationDescribe,addr,country,province,city,district,street);
             mapService.saveLocation(currentLocation);
+            new Thread(){
+                @Override
+                public void run() {
+                   mapService.uploadLocation(currentLocation).subscribe(new Observer<ApiResult>() {
+                       @Override
+                       public void onCompleted() {
+                           Log.d(TAG, "onCompleted: ");
+                       }
+
+                       @Override
+                       public void onError(Throwable e) {
+                           Log.d(TAG, "onError: ");
+                       }
+
+                       @Override
+                       public void onNext(ApiResult apiResult) {
+                           Log.d(TAG, "onNext: ");
+                       }
+                   });
+                }
+            }.start();
         }
     }
 }

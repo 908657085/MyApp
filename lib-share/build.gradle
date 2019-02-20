@@ -33,7 +33,7 @@ android {
 
 dependencies {
     def appDependencies = rootProject.ext.appDependencies
-    api files('libs/open_sdk_r5756_lite.jar')
+    implementation files('libs/open_sdk_r5756_lite.jar')
     implementation appDependencies.appcompat_v7
     implementation appDependencies.recyclerView
 }

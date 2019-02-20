@@ -46,7 +46,6 @@ dependencies {
     implementation appDependencies.rxJava
     implementation appDependencies.rxAndroid
     implementation appDependencies.gson
-    implementation appDependencies.okHttp
     implementation appDependencies.okHttp_log
     implementation appDependencies.retrofit
     implementation appDependencies.retrofit_converter_json

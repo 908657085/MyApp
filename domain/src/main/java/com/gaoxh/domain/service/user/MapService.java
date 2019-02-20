@@ -55,6 +55,6 @@ public class MapService {
     }
 
     public Observable<ApiResult> uploadLocation(Location location) {
-        return mapApi.uploadLocation(sharedPreferencesHelper.getString(Constants_SharedPreferences.USER_ID),location);
+        return mapApi.uploadLocation(sharedPreferencesHelper.getString(Constants_SharedPreferences.USER_ID),location.getRadius(),0,location.getLongitude(),location.getLatitude(),location.getAddr());
     }
 }

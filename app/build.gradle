@@ -14,6 +14,7 @@ android {
         versionCode globalConfiguration.getAt("androidVersionCode")
         versionName globalConfiguration.getAt("androidVersionName")
         testApplicationId globalConfiguration.getAt("testApplicationId")
+        multiDexEnabled true
         ndk {
             abiFilters "armeabi-v7a", "x86", "x86_64"
         }
@@ -43,6 +44,8 @@ android {
 
     configurations.all {
         resolutionStrategy.force 'com.google.code.findbugs:jsr305:3.0.0'
+        // OkHttp 3.5.0+ includes the websockets API, so we need this to prevent a conflict
+        exclude module: 'okhttp-ws'
     }
 
     lintOptions {
@@ -68,12 +71,12 @@ dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     annotationProcessor appDependencies.daggerCompiler
     annotationProcessor appDependencies.butterKnifeCompiler
+    implementation 'com.android.support:multidex:1.0.0'
     implementation appDependencies.dagger
     implementation appDependencies.butterKnife
     implementation appDependencies.rxJava
     implementation appDependencies.rxAndroid
     implementation appDependencies.gson
-    implementation appDependencies.okHttp
     implementation appDependencies.okHttp_log
     implementation appDependencies.retrofit
     implementation appDependencies.retrofit_converter_json

@@ -1,5 +1,7 @@
 package com.gaoxh.data.net;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.io.Serializable;
 
 /**
@@ -9,8 +11,11 @@ import java.io.Serializable;
 public class ApiResult<T> implements Serializable{
 
     private int code;
+    @SerializedName("Msg")
     private String msg;
+    @SerializedName("Success")
     private boolean success;
+    @SerializedName("Data")
     private T data;
 
     public ApiResult() {
