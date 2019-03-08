@@ -1,6 +1,5 @@
 package com.gaoxh.myapp.sys;
 
-import android.support.multidex.MultiDexApplication;
 
 import com.baidu.mapapi.CoordType;
 import com.baidu.mapapi.SDKInitializer;
@@ -23,6 +22,8 @@ import java.util.Arrays;
 import java.util.List;
 
 import javax.inject.Inject;
+
+import androidx.multidex.MultiDexApplication;
 
 
 /**
@@ -79,7 +80,7 @@ public class AndroidApplication extends MultiDexApplication implements HasCompon
     }
 
     private void initUserId() {
-        sharedPreferencesHelper.setString(Constants_SharedPreferences.USER_ID, "1");
+        sharedPreferencesHelper.setString(Constants_SharedPreferences.USER_ID, "2");
     }
 
     @Override

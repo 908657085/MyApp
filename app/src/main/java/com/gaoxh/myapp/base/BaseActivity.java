@@ -2,12 +2,13 @@ package com.gaoxh.myapp.base;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
 
 import com.gaoxh.myapp.di.components.ApplicationComponent;
 import com.gaoxh.myapp.di.modules.ActivityModule;
 import com.gaoxh.myapp.sys.AndroidApplication;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 
 /**

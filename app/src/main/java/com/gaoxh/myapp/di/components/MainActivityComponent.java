@@ -4,12 +4,9 @@ import com.gaoxh.myapp.di.PerActivity;
 import com.gaoxh.myapp.di.modules.ActivityModule;
 import com.gaoxh.myapp.di.modules.MainModule;
 import com.gaoxh.myapp.di.modules.ShareModule;
-import com.gaoxh.myapp.main.MainActivity;
-
-import javax.inject.Singleton;
+import com.gaoxh.myapp.main.activity.MainActivity;
 
 import dagger.Component;
-import dagger.Subcomponent;
 
 /**
  * @author 高雄辉

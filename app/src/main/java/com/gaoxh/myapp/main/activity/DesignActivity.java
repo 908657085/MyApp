@@ -1,19 +1,8 @@
-package com.gaoxh.myapp.main;
+package com.gaoxh.myapp.main.activity;
 
 import android.content.Context;
-import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Canvas;
 import android.graphics.Color;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.support.v7.graphics.Palette;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,7 +11,6 @@ import android.widget.TextView;
 import com.gaoxh.myapp.R;
 import com.gaoxh.myapp.base.BaseActivity;
 import com.gaoxh.myapp.di.ContextType;
-import com.gaoxh.myapp.di.HasComponent;
 import com.gaoxh.myapp.di.components.ActivityComponent;
 import com.gaoxh.myapp.di.components.DaggerActivityComponent;
 
@@ -32,6 +20,9 @@ import java.util.Random;
 
 import javax.inject.Inject;
 
+import androidx.recyclerview.widget.ItemTouchHelper;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 

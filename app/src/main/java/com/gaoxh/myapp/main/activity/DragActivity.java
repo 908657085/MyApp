@@ -1,4 +1,4 @@
-package com.gaoxh.myapp.main;
+package com.gaoxh.myapp.main.activity;
 
 import android.content.ClipData;
 import android.content.ClipDescription;

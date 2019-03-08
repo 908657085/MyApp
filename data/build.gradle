@@ -2,15 +2,13 @@ apply plugin: 'com.android.library'
 apply plugin: 'com.fernandocejas.frodo'
 
 android {
-    def globalConfiguration = rootProject.extensions.getByName("ext")
-
-    compileSdkVersion globalConfiguration.getAt("androidCompileSdkVersion")
-    buildToolsVersion globalConfiguration.getAt("androidBuildToolsVersion")
+    compileSdkVersion 28
 
     defaultConfig {
-        minSdkVersion globalConfiguration.getAt("androidMinSdkVersion")
-        targetSdkVersion globalConfiguration.getAt("androidTargetSdkVersion")
-        versionCode globalConfiguration.getAt("androidVersionCode")
+        minSdkVersion 19
+        targetSdkVersion 28
+        versionCode 10000
+        versionName '1.0.0'
     }
 
     lintOptions {
@@ -26,26 +24,18 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-    buildToolsVersion '25.0.0'
 }
 
 dependencies {
-
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-
-    def dataDependencies = rootProject.ext.dataDependencies
-    def testDependencies = rootProject.ext.dataTestDependencies
-
-    annotationProcessor dataDependencies.daggerCompiler
-
-    implementation dataDependencies.dagger
-    implementation dataDependencies.rxJava
-    implementation dataDependencies.rxAndroid
-    implementation dataDependencies.gson
-    implementation dataDependencies.okHttp_log
-    implementation dataDependencies.retrofit
-    implementation dataDependencies.retrofit_converter_json
-    implementation dataDependencies.retrofit_adapter_rxjava
-    implementation dataDependencies.greendao
-    compileOnly dataDependencies.javaxAnnotation
+    annotationProcessor 'com.google.dagger:dagger-compiler:+'
+    implementation 'com.google.dagger:dagger:+'
+    implementation 'io.reactivex.rxjava2:rxjava:+'
+    implementation 'io.reactivex.rxjava2:rxandroid:+'
+    implementation 'com.google.code.gson:gson:+'
+    implementation 'com.squareup.okhttp3:logging-interceptor:+'
+    implementation 'com.squareup.retrofit2:retrofit:+'
+    implementation 'com.squareup.retrofit2:converter-gson:+'
+    implementation 'com.squareup.retrofit2:adapter-rxjava:+'
+    implementation 'de.greenrobot:greendao:+'
 }

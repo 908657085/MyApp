@@ -4,6 +4,7 @@ import android.content.Context;
 
 import com.gaoxh.data.net.ApiRetrofit;
 import com.gaoxh.data.net.api.MapApi;
+import com.gaoxh.data.net.api.UserApi;
 
 import dagger.Module;
 import dagger.Provides;
@@ -31,5 +32,11 @@ public class ApiModule {
     @Provides
     MapApi provideMapApi(ApiRetrofit apiRetrofit){
         return apiRetrofit.createService(MapApi.class);
+    }
+
+
+    @Provides
+    UserApi provideUserApi(ApiRetrofit apiRetrofit){
+        return apiRetrofit.createService(UserApi.class);
     }
 }

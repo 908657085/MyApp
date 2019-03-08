@@ -1,4 +1,4 @@
-package com.gaoxh.myapp.main;
+package com.gaoxh.myapp.main.activity;
 
 import android.content.Context;
 import android.content.Intent;
@@ -13,10 +13,17 @@ import com.gaoxh.myapp.di.components.DaggerMainActivityComponent;
 import com.gaoxh.myapp.di.components.MainActivityComponent;
 import com.gaoxh.myapp.di.modules.MainModule;
 import com.gaoxh.myapp.di.modules.ShareModule;
+import com.gaoxh.myapp.main.fragment.NewsFragment;
 import com.gaoxh.widgets.BottomTabView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.inject.Inject;
 
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.viewpager.widget.ViewPager;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -37,7 +44,10 @@ public class MainActivity extends BaseActivity implements HasComponent<MainActiv
     public Context context;
     @BindView(R.id.v_main_bottomTab)
     public BottomTabView bottomTabView;
+    @BindView(R.id.vp_main)
+    public ViewPager mMainVP;
     private MainActivityComponent component;
+    private List<Fragment> fragments = new ArrayList<>();
 
     @Override
     public void setView() {
@@ -63,14 +73,54 @@ public class MainActivity extends BaseActivity implements HasComponent<MainActiv
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        initView();
+    }
+
+    private void initView() {
         ButterKnife.bind(this);
         bottomTabView.setOnCheckedChangeListener(new BottomTabView.onCheckedChangeListener() {
             @Override
             public void checkedChange(int index) {
                 Toast.makeText(context, "点击了+" + index, Toast.LENGTH_SHORT).show();
+                mMainVP.setCurrentItem(index,true);
+            }
+        });
+        for (int i = 0; i < 4; i++) {
+            NewsFragment fragment = new NewsFragment();
+            Bundle bundle = new Bundle();
+            bundle.putString("name", "card " + i);
+            fragment.setArguments(bundle);
+            fragments.add(fragment);
+        }
+        mMainVP.setAdapter(new FragmentPagerAdapter(getSupportFragmentManager()) {
+            @Override
+            public Fragment getItem(int position) {
+                return fragments.get(position);
+            }
+
+            @Override
+            public int getCount() {
+                return fragments.size();
+            }
+        });
+        mMainVP.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                bottomTabView.setCheckedItem(position);
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
             }
         });
     }
+
 
     @Override
     protected void onStart() {
@@ -91,6 +141,12 @@ public class MainActivity extends BaseActivity implements HasComponent<MainActiv
     @OnClick(R.id.btn_map)
     public void navigateToMap() {
         Intent intent = new Intent(context, MapActivity.class);
+        context.startActivity(intent);
+    }
+
+    @OnClick(R.id.btn_user)
+    public void navigateToUser() {
+        Intent intent = new Intent(context, UserActivity.class);
         context.startActivity(intent);
     }
 }

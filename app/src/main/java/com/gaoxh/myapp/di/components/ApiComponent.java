@@ -1,6 +1,7 @@
 package com.gaoxh.myapp.di.components;
 
 import com.gaoxh.data.net.api.MapApi;
+import com.gaoxh.data.net.api.UserApi;
 import com.gaoxh.myapp.di.modules.ApiModule;
 
 import javax.inject.Singleton;
@@ -16,4 +17,5 @@ import dagger.Component;
 @Component (modules = ApiModule.class)
 public interface ApiComponent {
     MapApi mapApi();
+    UserApi userApi();
 }

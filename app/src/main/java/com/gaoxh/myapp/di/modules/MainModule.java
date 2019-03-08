@@ -1,9 +1,6 @@
 package com.gaoxh.myapp.di.modules;
 
-import android.app.Activity;
-
-import com.gaoxh.myapp.di.PerActivity;
-import com.gaoxh.myapp.main.MainActivity;
+import com.gaoxh.myapp.main.activity.MainActivity;
 
 import javax.inject.Named;
 

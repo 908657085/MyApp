@@ -4,6 +4,7 @@ import android.content.Context;
 
 import com.gaoxh.data.cache.SharedPreferencesHelper;
 import com.gaoxh.data.net.api.MapApi;
+import com.gaoxh.data.net.api.UserApi;
 import com.gaoxh.myapp.di.Application;
 import com.gaoxh.myapp.di.ContextType;
 import com.gaoxh.myapp.di.modules.ApplicationModule;
@@ -28,6 +29,8 @@ public interface ApplicationComponent {
     SharedPreferencesHelper sharedPreferencesHelper();
 
     MapApi mapApi();
+
+    UserApi userApi();
 
     void inject(AndroidApplication application);
 

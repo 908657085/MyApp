@@ -1,10 +1,11 @@
 package com.gaoxh.myapp.base;
 
 import android.app.Activity;
-import android.support.v4.app.Fragment;
 import android.widget.Toast;
 
 import com.gaoxh.myapp.di.HasComponent;
+
+import androidx.fragment.app.Fragment;
 
 /**
  * Created by 高雄辉 on 2016/5/24.

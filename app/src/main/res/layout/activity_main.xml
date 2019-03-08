@@ -15,66 +15,77 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/l_title"
         android:layout_margin="16dp"
-        android:text="ReactNative"
-        />
-<Button
+        android:text="ReactNative" />
+
+    <Button
         android:id="@+id/btn_map"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/btn_react_native"
         android:layout_margin="16dp"
-    android:textSize="30sp"
         android:text="小熊在哪里"
+        android:textSize="30sp" />
+
+    <Button
+        android:id="@+id/btn_user"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btn_map"
+        android:layout_margin="16dp"
+        android:text="小熊在哪里"
+        android:textSize="30sp" />
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/vp_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/l_title"
+        android:layout_above="@+id/v_main_bottomTab"
+        android:scrollbars="none"
         />
-
-
 
     <com.gaoxh.widgets.BottomTabView
         android:id="@+id/v_main_bottomTab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        >
+        android:layout_alignParentBottom="true">
+
         <com.gaoxh.widgets.BottomTab
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:tabIconNormal="@drawable/tab_news"
-            app:tabIconChecked="@drawable/tab_news_checked"
-            app:tabText="新闻"
-            app:tabTextColorNormal="@color/gray"
-            app:tabTextColorChecked="@color/orange"
             app:tabDefaultChecked="true"
-            />
+            app:tabIconChecked="@drawable/tab_news_checked"
+            app:tabIconNormal="@drawable/tab_news"
+            app:tabText="新闻"
+            app:tabTextColorChecked="@color/orange"
+            app:tabTextColorNormal="@color/gray" />
 
         <com.gaoxh.widgets.BottomTab
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:tabIconNormal="@drawable/tab_discovery"
             app:tabIconChecked="@drawable/tab_discovery_checked"
+            app:tabIconNormal="@drawable/tab_discovery"
             app:tabText="社交"
-            app:tabTextColorNormal="@color/gray"
             app:tabTextColorChecked="@color/orange"
-            />
+            app:tabTextColorNormal="@color/gray" />
 
         <com.gaoxh.widgets.BottomTab
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:tabIconNormal="@drawable/tab_friend"
             app:tabIconChecked="@drawable/tab_friend_checked"
+            app:tabIconNormal="@drawable/tab_friend"
             app:tabText="好友"
-            app:tabTextColorNormal="@color/gray"
             app:tabTextColorChecked="@color/orange"
-            />
+            app:tabTextColorNormal="@color/gray" />
 
         <com.gaoxh.widgets.BottomTab
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:tabIconNormal="@drawable/tab_me"
             app:tabIconChecked="@drawable/tab_me_checked"
+            app:tabIconNormal="@drawable/tab_me"
             app:tabText="我"
-            app:tabTextColorNormal="@color/gray"
             app:tabTextColorChecked="@color/orange"
-            />
+            app:tabTextColorNormal="@color/gray" />
     </com.gaoxh.widgets.BottomTabView>
 
 </RelativeLayout>

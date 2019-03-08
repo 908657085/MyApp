@@ -2,7 +2,7 @@ package com.gaoxh.myapp.di.components;
 
 import com.gaoxh.myapp.di.PerActivity;
 import com.gaoxh.myapp.di.modules.ActivityModule;
-import com.gaoxh.myapp.main.MapActivity;
+import com.gaoxh.myapp.main.activity.MapActivity;
 
 import dagger.Component;
 

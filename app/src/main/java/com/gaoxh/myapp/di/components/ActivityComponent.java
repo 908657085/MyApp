@@ -16,15 +16,11 @@
 package com.gaoxh.myapp.di.components;
 
 import android.app.Activity;
-import android.content.Context;
 
 
 import com.gaoxh.myapp.base.BaseActivity;
-import com.gaoxh.myapp.di.Application;
-import com.gaoxh.myapp.di.ContextType;
 import com.gaoxh.myapp.di.PerActivity;
 import com.gaoxh.myapp.di.modules.ActivityModule;
-import com.gaoxh.myapp.main.StartActivity;
 
 import dagger.Component;
 

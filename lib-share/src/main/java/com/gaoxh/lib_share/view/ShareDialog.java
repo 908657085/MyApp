@@ -2,20 +2,13 @@ package com.gaoxh.lib_share.view;
 
 import android.app.Dialog;
 import android.content.Context;
-import android.provider.Contacts;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.view.Display;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 
 import com.gaoxh.lib_share.R;
-import com.gaoxh.lib_share.ShareUtil;
 import com.gaoxh.lib_share.api.ShareApi;
 import com.gaoxh.lib_share.api.ShareApiFactory;
 import com.gaoxh.lib_share.bean.IShareItem;
@@ -25,6 +18,9 @@ import com.gaoxh.lib_share.view.adapter.ShareAdapter;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 /**
  * @author 高雄辉

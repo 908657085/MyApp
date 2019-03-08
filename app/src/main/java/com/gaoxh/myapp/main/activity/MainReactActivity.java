@@ -1,4 +1,4 @@
-package com.gaoxh.myapp.main;
+package com.gaoxh.myapp.main.activity;
 
 import com.facebook.react.ReactActivity;
 

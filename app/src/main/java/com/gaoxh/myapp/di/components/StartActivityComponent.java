@@ -15,12 +15,9 @@
  */
 package com.gaoxh.myapp.di.components;
 
-import android.app.Activity;
-
-import com.gaoxh.myapp.base.BaseActivity;
 import com.gaoxh.myapp.di.PerActivity;
 import com.gaoxh.myapp.di.modules.ActivityModule;
-import com.gaoxh.myapp.main.StartActivity;
+import com.gaoxh.myapp.main.activity.StartActivity;
 
 import dagger.Component;
 

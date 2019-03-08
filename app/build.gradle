@@ -1,26 +1,21 @@
 apply plugin: 'com.android.application'
 apply plugin: 'com.fernandocejas.frodo'
+apply plugin: 'com.jakewharton.butterknife'
 
 android {
-    def globalConfiguration = rootProject.extensions.getByName("ext")
-
-    compileSdkVersion globalConfiguration.getAt("androidCompileSdkVersion")
+    compileSdkVersion 28
 
     defaultConfig {
-        minSdkVersion globalConfiguration.getAt("androidMinSdkVersion")
-        targetSdkVersion globalConfiguration.getAt("androidTargetSdkVersion")
+        minSdkVersion 19
+        targetSdkVersion 28
 
-        applicationId globalConfiguration.getAt("androidApplicationId")
-        versionCode globalConfiguration.getAt("androidVersionCode")
-        versionName globalConfiguration.getAt("androidVersionName")
-        testApplicationId globalConfiguration.getAt("testApplicationId")
+        versionCode 10000
+        versionName '1.0.0'
         multiDexEnabled true
         ndk {
             abiFilters "armeabi-v7a", "x86", "x86_64"
         }
     }
-
-
 
     signingConfigs {
         debug {
@@ -42,12 +37,6 @@ android {
         }
     }
 
-    configurations.all {
-        resolutionStrategy.force 'com.google.code.findbugs:jsr305:3.0.0'
-        // OkHttp 3.5.0+ includes the websockets API, so we need this to prevent a conflict
-        exclude module: 'okhttp-ws'
-    }
-
     lintOptions {
         abortOnError false
     }
@@ -58,41 +47,52 @@ android {
             jni.srcDirs = [] //disable automatic ndk-build call
         }
     }
+
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+
+configurations.all {
+    resolutionStrategy {
+        force 'com.google.code.findbugs:jsr305:3.0.0'
+    }
+    // OkHttp 3.5.0+ includes the websockets API, so we need this to prevent a conflict
+    exclude module: 'okhttp-ws'
 }
 
 dependencies {
-    def appDependencies = rootProject.ext.appDependencies
-    def testDependencies = rootProject.ext.appTestDependencies
-    def developmentDependencies = rootProject.ext.developmentDependencies
     implementation project(':data')
     implementation project(':domain')
     implementation project(':widgets')
     implementation project(':lib-share')
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    annotationProcessor appDependencies.daggerCompiler
-    annotationProcessor appDependencies.butterKnifeCompiler
-    implementation 'com.android.support:multidex:1.0.0'
-    implementation appDependencies.dagger
-    implementation appDependencies.butterKnife
-    implementation appDependencies.rxJava
-    implementation appDependencies.rxAndroid
-    implementation appDependencies.gson
-    implementation appDependencies.okHttp_log
-    implementation appDependencies.retrofit
-    implementation appDependencies.retrofit_converter_json
-    implementation appDependencies.retrofit_adapter_rxjava
-    implementation appDependencies.glide
-    implementation appDependencies.greendao
-    implementation appDependencies.support_v4
-    implementation appDependencies.appcompat_v7
-    implementation appDependencies.recyclerView
-    implementation appDependencies.design
-    implementation appDependencies.cardView
-    implementation appDependencies.palette_v7
-    compileOnly appDependencies.javaxAnnotation
+    implementation 'androidx.multidex:multidex:2.0.0'
+    annotationProcessor 'com.google.dagger:dagger-compiler:+'
+    implementation 'com.google.dagger:dagger:+'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:+'
+    implementation 'com.jakewharton:butterknife:+'
+    implementation 'io.reactivex.rxjava2:rxjava:+'
+    implementation 'io.reactivex.rxjava2:rxandroid:+'
+    implementation 'com.google.code.gson:gson:+'
+    implementation 'com.squareup.okhttp3:logging-interceptor:+'
+    implementation 'com.squareup.retrofit2:retrofit:+'
+    implementation 'com.squareup.retrofit2:converter-gson:+'
+    implementation 'com.squareup.retrofit2:adapter-rxjava:+'
+    implementation 'com.github.bumptech.glide:glide:+'
+    implementation 'de.greenrobot:greendao:+'
+    implementation 'androidx.appcompat:appcompat:1.0.0-beta01'
+    implementation 'androidx.recyclerview:recyclerview:1.0.0-beta01'
+    implementation 'com.google.android.material:material:1.0.0-beta01'
+    implementation 'androidx.cardview:cardview:1.0.0-beta01'
+    implementation 'com.android.support:palette-v7:'
     implementation 'com.facebook.react:react-native:+'
-    //Development
-    implementation developmentDependencies.leakCanary
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0-beta01'
+    implementation 'com.squareup.leakcanary:leakcanary-android:+'
+
 }
 
 // Run this once to be able to run the application with BUCK

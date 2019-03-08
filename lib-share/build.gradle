@@ -2,15 +2,13 @@ apply plugin: 'com.android.library'
 
 android {
 
-    def globalConfiguration = rootProject.extensions.getByName("ext")
-
-    compileSdkVersion globalConfiguration.getAt("androidCompileSdkVersion")
-    buildToolsVersion globalConfiguration.getAt("androidBuildToolsVersion")
+    compileSdkVersion 28
 
     defaultConfig {
-        minSdkVersion globalConfiguration.getAt("androidMinSdkVersion")
-        targetSdkVersion globalConfiguration.getAt("androidTargetSdkVersion")
-        versionCode globalConfiguration.getAt("androidVersionCode")
+        minSdkVersion 19
+        targetSdkVersion 28
+        versionCode 10000
+        versionName '1.0.0'
     }
 
     lintOptions {
@@ -28,12 +26,11 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-    buildToolsVersion '25.0.0'
 }
 
+
 dependencies {
-    def appDependencies = rootProject.ext.appDependencies
     implementation files('libs/open_sdk_r5756_lite.jar')
-    implementation appDependencies.appcompat_v7
-    implementation appDependencies.recyclerView
+    implementation 'androidx.appcompat:appcompat:1.0.0-beta01'
+    implementation 'androidx.recyclerview:recyclerview:1.0.0-beta01'
 }
