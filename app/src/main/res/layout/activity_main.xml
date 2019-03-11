@@ -9,32 +9,6 @@
         android:id="@+id/l_title"
         layout="@layout/layout_title" />
 
-    <Button
-        android:id="@+id/btn_react_native"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/l_title"
-        android:layout_margin="16dp"
-        android:text="ReactNative" />
-
-    <Button
-        android:id="@+id/btn_map"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/btn_react_native"
-        android:layout_margin="16dp"
-        android:text="小熊在哪里"
-        android:textSize="30sp" />
-
-    <Button
-        android:id="@+id/btn_user"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/btn_map"
-        android:layout_margin="16dp"
-        android:text="小熊在哪里"
-        android:textSize="30sp" />
-
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/vp_main"
         android:layout_width="match_parent"

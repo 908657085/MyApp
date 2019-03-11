@@ -18,6 +18,7 @@ package com.gaoxh.myapp.di.modules;
 import android.content.Context;
 
 
+import com.facebook.react.ReactInstanceManager;
 import com.gaoxh.data.cache.SharedPreferencesHelper;
 import com.gaoxh.data.net.ApiRetrofit;
 import com.gaoxh.data.net.ApiTokenIntercepter;
@@ -58,6 +59,12 @@ public class ApplicationModule {
     @Application
     SharedPreferencesHelper provideSharedPreferencesHelper(@ContextType(ContextType.Type.Application) Context context) {
         return new SharedPreferencesHelper(context);
+    }
+
+    @Provides
+    @Application
+    ReactInstanceManager provideReactInstanceManager(){
+        return this.application.getReactNativeHost().getReactInstanceManager();
     }
 
 }

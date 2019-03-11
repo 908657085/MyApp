@@ -1,6 +1,7 @@
 package com.gaoxh.myapp.base;
 
 import android.app.Activity;
+import android.content.Context;
 import android.widget.Toast;
 
 import com.gaoxh.myapp.di.HasComponent;
@@ -13,8 +14,6 @@ import androidx.fragment.app.Fragment;
 public class BaseFragment extends Fragment implements BaseView{
     
     public static  String TAG="Fragment_";
-
-
 
     /**
      * Gets a component for dependency injection by its type.

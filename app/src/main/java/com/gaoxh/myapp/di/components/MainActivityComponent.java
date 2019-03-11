@@ -5,6 +5,8 @@ import com.gaoxh.myapp.di.modules.ActivityModule;
 import com.gaoxh.myapp.di.modules.MainModule;
 import com.gaoxh.myapp.di.modules.ShareModule;
 import com.gaoxh.myapp.main.activity.MainActivity;
+import com.gaoxh.myapp.main.fragment.MainFragment;
+import com.gaoxh.myapp.main.fragment.MainReactFragment;
 
 import dagger.Component;
 
@@ -17,4 +19,8 @@ import dagger.Component;
 @Component(dependencies = ApplicationComponent.class, modules = {ActivityModule.class,MainModule.class, ShareModule.class})
 public interface MainActivityComponent {
     void inject(MainActivity mainActivity);
+
+    void inject(MainFragment mainFragment);
+
+    void inject(MainReactFragment mainReactFragment);
 }

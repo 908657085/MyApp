@@ -26,14 +26,13 @@ public abstract class BaseReactFragment extends BaseFragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        mReactRootView = new ReactRootView(context);
         mReactInstanceManager = ((AndroidApplication) getActivity().getApplication()).getReactNativeHost().getReactInstanceManager();
     }
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        super.onCreateView(inflater,container,savedInstanceState);
+        mReactRootView = new ReactRootView(getActivity());
         return mReactRootView;
     }
 
@@ -45,6 +44,12 @@ public abstract class BaseReactFragment extends BaseFragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         mReactRootView.startReactApplication(mReactInstanceManager, getMainComponentName(), null);
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        mReactRootView.unmountReactApplication();
     }
 
     protected abstract String getMainComponentName();

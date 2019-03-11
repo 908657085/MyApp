@@ -2,6 +2,7 @@ package com.gaoxh.myapp.di.components;
 
 import android.content.Context;
 
+import com.facebook.react.ReactInstanceManager;
 import com.gaoxh.data.cache.SharedPreferencesHelper;
 import com.gaoxh.data.net.api.MapApi;
 import com.gaoxh.data.net.api.UserApi;
@@ -27,6 +28,8 @@ public interface ApplicationComponent {
 
 
     SharedPreferencesHelper sharedPreferencesHelper();
+
+    ReactInstanceManager reactInstanceManager();
 
     MapApi mapApi();
 
