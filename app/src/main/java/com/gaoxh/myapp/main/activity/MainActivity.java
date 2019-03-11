@@ -13,6 +13,7 @@ import com.gaoxh.myapp.di.components.DaggerMainActivityComponent;
 import com.gaoxh.myapp.di.components.MainActivityComponent;
 import com.gaoxh.myapp.di.modules.MainModule;
 import com.gaoxh.myapp.di.modules.ShareModule;
+import com.gaoxh.myapp.main.fragment.MainReactFragment;
 import com.gaoxh.myapp.main.fragment.NewsFragment;
 import com.gaoxh.widgets.BottomTabView;
 
@@ -82,16 +83,17 @@ public class MainActivity extends BaseActivity implements HasComponent<MainActiv
             @Override
             public void checkedChange(int index) {
                 Toast.makeText(context, "点击了+" + index, Toast.LENGTH_SHORT).show();
-                mMainVP.setCurrentItem(index,true);
+                mMainVP.setCurrentItem(index, true);
             }
         });
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < 3; i++) {
             NewsFragment fragment = new NewsFragment();
             Bundle bundle = new Bundle();
             bundle.putString("name", "card " + i);
             fragment.setArguments(bundle);
             fragments.add(fragment);
         }
+        fragments.add(new MainReactFragment());
         mMainVP.setAdapter(new FragmentPagerAdapter(getSupportFragmentManager()) {
             @Override
             public Fragment getItem(int position) {

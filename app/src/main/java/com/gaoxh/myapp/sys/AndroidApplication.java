@@ -4,8 +4,10 @@ package com.gaoxh.myapp.sys;
 import com.baidu.mapapi.CoordType;
 import com.baidu.mapapi.SDKInitializer;
 import com.facebook.react.ReactApplication;
+import com.facebook.react.ReactInstanceManager;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
+import com.facebook.react.bridge.ReactContext;
 import com.facebook.react.shell.MainReactPackage;
 import com.gaoxh.data.cache.SharedPreferencesHelper;
 import com.gaoxh.data.contstants.Constants_SharedPreferences;
@@ -48,6 +50,13 @@ public class AndroidApplication extends MultiDexApplication implements HasCompon
     @Inject
     public SharedPreferencesHelper sharedPreferencesHelper;
     private ApplicationComponent applicationComponent;
+    private ReactContext mReactContext;
+    private final ReactInstanceManager.ReactInstanceEventListener mReactInstanceEventListener = new ReactInstanceManager.ReactInstanceEventListener() {
+        @Override
+        public void onReactContextInitialized(ReactContext context) {
+            mReactContext = context;
+        }
+    };
 
     @Override
     public void onCreate() {
@@ -56,6 +65,7 @@ public class AndroidApplication extends MultiDexApplication implements HasCompon
         initializeLeakDetection();
         initializeBaiduSdk();
         initUserId();
+        registerReactInstanceEventListener();
     }
 
     private void initializeInjector() {
@@ -88,8 +98,16 @@ public class AndroidApplication extends MultiDexApplication implements HasCompon
         return mReactNativeHost;
     }
 
+    private void registerReactInstanceEventListener() {
+        mReactNativeHost.getReactInstanceManager().addReactInstanceEventListener(mReactInstanceEventListener);
+    }
+
     @Override
     public ApplicationComponent getComponent() {
         return this.applicationComponent;
+    }
+
+    public ReactContext getReactContext() {
+        return mReactContext;
     }
 }
